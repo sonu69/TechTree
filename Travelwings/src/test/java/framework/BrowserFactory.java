@@ -11,7 +11,7 @@ public class BrowserFactory {
 private static WebDriver driver;
 	
 public static WebDriver openBrowser() {
-	String browsername = "firefox";
+	String browsername = "chrome";
 	
 	if(browsername.equalsIgnoreCase("chrome")) {
 	System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
