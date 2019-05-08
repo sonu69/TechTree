@@ -8,7 +8,8 @@ public class Flights {
 
 	@Test
 	public void flight() {	
-		System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver");
+		//System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver");
+		System.setProperty("webdriver.chrome.driver", ".//chromedriver");
 		
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://newuat.travelwings.com/");
