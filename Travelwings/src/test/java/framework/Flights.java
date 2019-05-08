@@ -13,7 +13,7 @@ public class Flights {
 		//System.setProperty("webdriver.chrome.driver", ".//chromedriver");
 		ChromeOptions options = new ChromeOptions();  
 		//options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
-		options.setHeadless(false);
+		options.setHeadless(true);
 		
 		WebDriver driver = new ChromeDriver(options);
 		driver.get("https://newuat.travelwings.com/");
