@@ -9,10 +9,11 @@ public class Flights {
 
 	@Test
 	public void flight() {	
-		//System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver");
-		System.setProperty("webdriver.chrome.driver", ".//chromedriver");
+		System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver");
+		//System.setProperty("webdriver.chrome.driver", ".//chromedriver");
 		ChromeOptions options = new ChromeOptions();  
-		options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors"); 
+		//options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
+		options.setHeadless(false);
 		
 		WebDriver driver = new ChromeDriver(options);
 		driver.get("https://newuat.travelwings.com/");
