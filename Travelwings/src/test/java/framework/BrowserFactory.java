@@ -18,7 +18,8 @@ public static WebDriver openBrowser() {
 	//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver");
 	
 	ChromeOptions options = new ChromeOptions();
-	options.setHeadless(false);
+	options.addArguments("--headless");
+	//options.setHeadless(false);
 	
 	driver = new ChromeDriver(options);
 		
