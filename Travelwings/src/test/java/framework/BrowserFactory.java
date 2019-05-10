@@ -26,7 +26,7 @@ public static WebDriver openBrowser() {
 		System.setProperty("webdriver.gecko.driver", ".//Drivers//geckodriver");
 
 		FirefoxOptions options = new FirefoxOptions();
-		options.setHeadless(true);
+		options.setHeadless(false);
 		
 		driver = new FirefoxDriver(options);
 	}
