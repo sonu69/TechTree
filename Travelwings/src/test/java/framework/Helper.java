@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.io.FileHandler;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
@@ -31,12 +32,12 @@ public static String captureScreenshot(WebDriver driver) {
 		}
 		return screenshotpath;
 	}
-	public static void takescreenshot(WebDriver driver) throws Exception {
-
-		Screenshot s = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(driver);
-
-		ImageIO.write(s.getImage(), "PNG", new File(System.getProperty("user.dir")+"/Screenshots/sonu"+".png"));
-	}
+//	public static void takescreenshot(WebDriver driver) throws Exception {
+//
+//		Screenshot s = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(driver);
+//
+//		ImageIO.write(s.getImage(), "PNG", new File(System.getProperty("user.dir")+"/Screenshots/sonu"+".png"));
+//	}
 
 	public static String getCurrentDateTime() {
 		DateFormat customer_format = new SimpleDateFormat("MM_dd_yyyy_HH_mm_ss");
@@ -45,4 +46,12 @@ public static String captureScreenshot(WebDriver driver) {
 		 
 	}
 
+	
+	
+
+	
+	
+	
+	
+	
 }

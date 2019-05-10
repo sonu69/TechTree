@@ -5,6 +5,9 @@
     <classes>
       <class name="framework.Flights">
         <methods>
+          <include name="setupsuite"/>
+          <include name="teardown"/>
+          <include name="bc"/>
           <include name="flight"/>
         </methods>
       </class> <!-- framework.Flights -->
