@@ -19,8 +19,8 @@ public static String captureScreenshot(WebDriver driver) {
 		
 		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		
-		String screenshotpath=System.getProperty("user.dir")+"/Screenshots/sonu"+Helper.getCurrentDateTime()+".png";
-//		String screenshotpath=System.getProperty("user.dir")+"/Screenshots/sonu"+".png";
+		//String screenshotpath=System.getProperty("user.dir")+"/Screenshots/sonu"+Helper.getCurrentDateTime()+".png";
+		String screenshotpath=System.getProperty("user.dir")+"/Screenshots/sonu"+".png";
 		try {
 			FileHandler.copy(src, new File(screenshotpath));
 		} catch (IOException e) {
