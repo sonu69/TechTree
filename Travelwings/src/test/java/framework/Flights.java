@@ -255,6 +255,13 @@ public class Flights {
 		System.out.println("Booking failed");
 	}
 	
+	WebElement Reference_number1=driver.findElement(By.xpath("//b[@data-ng-bind='booking.fbRefrenceNo']"));
+	String Reference_number = Reference_number1.getText();
+	System.out.println("Reference_number is- "+Reference_number);
+	
+	WebElement Total1=driver.findElement(By.xpath("//div[@class='amount']/span[@class='ng-binding']"));
+	String Total = Total1.getText();
+	System.out.println("Total amount is- "+Total);
 		
 	}
 	

@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class BrowserFactory {
 	
@@ -19,17 +20,23 @@ public static WebDriver openBrowser() {
 	
 	ChromeOptions options = new ChromeOptions();
 	options.addArguments("--headless");
+	options.addArguments("window-size=1700x800");
+	
 	//options.setHeadless(false);
 	
 	driver = new ChromeDriver(options);
+	new DesiredCapabilities();
+	DesiredCapabilities cap=DesiredCapabilities.chrome();
 		
 	} else if(browsername.equalsIgnoreCase("firefox")) {
 		System.setProperty("webdriver.gecko.driver", ".//Drivers//geckodriver");
 
-		FirefoxOptions options = new FirefoxOptions();
-		options.setHeadless(false);
+		//FirefoxOptions options = new FirefoxOptions();
+		//options.setHeadless(false);
 		
-		driver = new FirefoxDriver(options);
+		driver = new FirefoxDriver();
+		new DesiredCapabilities();
+		DesiredCapabilities cap=DesiredCapabilities.firefox();
 	}
 	
 	return driver;
