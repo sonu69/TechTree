@@ -12,6 +12,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.io.FileHandler;
 
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+
 
 public class Helper {
 	
@@ -29,12 +33,22 @@ public static String captureScreenshot(WebDriver driver) {
 		}
 		return screenshotpath;
 	}
-//	public static void takescreenshot(WebDriver driver) throws Exception {
-//
-//		Screenshot s = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100)).takeScreenshot(driver);
-//
-//		ImageIO.write(s.getImage(), "PNG", new File(System.getProperty("user.dir")+"/Screenshots/sonu"+".png"));
-//	}
+
+	public static String takescreenshot(WebDriver driver) throws Exception {
+
+		//String screenshotpath=System.getProperty("user.dir")+"/Screenshots/sonu"+Helper.getCurrentDateTime()+".png";
+		String screenshotpath=System.getProperty("user.dir")+"/Screenshots/sonu"+".png";
+		
+		Screenshot fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
+	    
+		try {
+			ImageIO.write(fpScreenshot.getImage(),"PNG",new File(screenshotpath));
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	     return screenshotpath;
+	}
 
 	public static String getCurrentDateTime() {
 		DateFormat customer_format = new SimpleDateFormat("MM_dd_yyyy_HH_mm_ss");
@@ -43,12 +57,4 @@ public static String captureScreenshot(WebDriver driver) {
 		 
 	}
 
-	
-	
-
-	
-	
-	
-	
-	
 }
