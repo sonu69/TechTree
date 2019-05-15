@@ -7,15 +7,32 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtils {
+	
+static XSSFSheet sh;
+	
 
-	public static void main(String[] args) throws IOException {
-		 File fl = new File(".//Data//Test_Data.xlsx");
-		 FileInputStream fis = new FileInputStream(fl);
-		 XSSFWorkbook wb = new XSSFWorkbook(fis);
-		 XSSFSheet sh = wb.getSheetAt(0);
-		 String data = sh.getRow(0).getCell(0).getStringCellValue();
-		 System.out.println(data);
 
+	public static void excel() throws IOException {
+		File fl = new File(".//Data//Test_Data.xlsx");
+		FileInputStream fis = new FileInputStream(fl);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		sh = wb.getSheetAt(0);
 	}
+	
+	
+	
+	public static String getStringValue(int row, int cell) throws IOException {
+		excel();
+		return sh.getRow(row).getCell(cell).getStringCellValue();
+	}
+	
+	
+	
+	public static double getIntValue(int row, int cell) throws IOException {
+		excel();
+		return sh.getRow(row).getCell(cell).getNumericCellValue();
+	}
+	
+	
 
 }
