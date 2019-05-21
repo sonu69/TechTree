@@ -124,6 +124,8 @@ public class Flights {
 		lets_play.click();
 		
 		Thread.sleep(5000);
+
+		
 		
 		List<WebElement> flights=driver.findElements(By.xpath("//p[@class='travel-company-name ng-binding']"));
 		
@@ -137,6 +139,8 @@ public class Flights {
 			}
 		}
 
+		
+		
 	Thread.sleep(5000);
 	
 	//WebElement continue_popup=driver.findElement(By.xpath("//button[@class='btn bttn-yellow yellow-bttn ng-binding']"));
