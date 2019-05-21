@@ -143,6 +143,7 @@ public class Flights {
 	//WebElement continue_popup=driver.findElement(By.xpath("//div[@class='col-md-6']"));
 	//WebElement continue_popup=driver.findElement(By.xpath("//button[@class='btn bttn-grey-bg ng-binding']"));
 	
+	
 	try {
 	
 		WebElement continue_popup=driver.findElement(By.xpath("//h4[@class='modal-title ng-binding ng-scope']"));
@@ -151,6 +152,8 @@ public class Flights {
 	catch(Exception e) {
 		System.out.println("price has not changed");
 	}
+	
+	
 	
 	driver.findElement(By.xpath("//button[text()='CONTINUE' and @class='bttn-yellow yellow-button ng-scope']")).click();
 	

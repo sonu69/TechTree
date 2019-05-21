@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import actions.Search_Inputs;
 import pageObjects.ChangeCountry_Page;
 import pageObjects.Login_Page;
 import pageObjects.SearchFlight_Page;
@@ -19,6 +20,9 @@ public class Test {
 				driver.get("https://test.techtreeit.in/");
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				
+				SearchFlight_Page.journey_class(driver, "business").click();
+				
+				SearchFlight_Page.return_class(driver, "business").click();
 
 
 	}
