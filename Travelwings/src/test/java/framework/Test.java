@@ -1,22 +1,16 @@
 package framework;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import actions.FlightSelect_Page;
 import actions.Search_Inputs;
-import pageObjects.ChangeCountry_Page;
 import pageObjects.Itinerary_Page;
-import pageObjects.Login_Page;
-import pageObjects.SearchFlight_Page;
+import pageObjects.TravellerDetails_Page;
+import pageObjects.YourEmailId_Page;
 
 public class Test {
 
@@ -56,9 +50,15 @@ public class Test {
 				
 				lets_play.click();
 				
+				Thread.sleep(5000);
+				
 				FlightSelect_Page.select_flight(driver, "Spicejet");
 				
 				Itinerary_Page.continue_itinerary(driver).click();
+				
+				YourEmailId_Page.account_login(driver, "sonu.kumar@techtreeit.com", "sonu3791");
+				
+				TravellerDetails_Page.add_passengers(driver);
 				
 				
 				

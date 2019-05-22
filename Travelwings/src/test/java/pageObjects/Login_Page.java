@@ -33,6 +33,4 @@ public class Login_Page {
 		return element;
 	}
 	
-	
-
 }

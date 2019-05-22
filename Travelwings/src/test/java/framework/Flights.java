@@ -93,9 +93,9 @@ public class Flights {
 		WebElement traveller = driver.findElement(By.xpath("//span[@class='traveler-text']"));
 		traveller.click();
 		
-		int a = 1;
-		int c=0;
-		int i=0;
+		int a = 2;
+		int c=2;
+		int i=1;
 		
 		for(int n=1;n<a;n++){
 			WebElement adult_count=driver.findElement(By.xpath("//button[@data-ng-click='flight.addAdult()']"));

@@ -9,7 +9,6 @@ import org.openqa.selenium.WebElement;
 public class FlightSelect_Page {
 	
 	public static void select_flight(WebDriver driver,String flightname) {
-		
 
 		List<WebElement> flights=driver.findElements(By.xpath("//p[@class='travel-company-name ng-binding']"));
 		
@@ -20,9 +19,7 @@ public class FlightSelect_Page {
 			if(flights.get(j).getText().equalsIgnoreCase(flightname)) {
 				select_buttons.get(j).click();
 				break;
-			}			
-			
-			
+			}	
 			
 		}
 

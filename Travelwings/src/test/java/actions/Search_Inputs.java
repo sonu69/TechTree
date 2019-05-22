@@ -96,28 +96,27 @@ public class Search_Inputs {
 		
 		SearchFlight_Page.pax(driver).click();
 		
+		
 		for(int n=1;n<adult;n++){
 			WebElement adult_count=driver.findElement(By.xpath("//button[@data-ng-click='flight.addAdult()']"));
 			adult_count.click();
 		}
+		
 
 		for(int o=1;o<=child;o++){
 			WebElement child_count=driver.findElement(By.xpath("//button[@data-ng-click='flight.addChild()']"));
 			child_count.click();
 		}
 		
-		if(infants>=adult) {
-		for(int p=1;p<=adult;p++){
+		if(infants<=adult) {
+		for(int p=1;p<=infants;p++){
 			WebElement infant_count=driver.findElement(By.xpath("//button[@data-ng-click='flight.addInfant()']"));
 			infant_count.click();
-			}
 		}
-		else {
-			for(int p=1;p<adult;p++){
-				WebElement infant_count=driver.findElement(By.xpath("//button[@data-ng-click='flight.addInfant()']"));
-				infant_count.click();	
-			}
+		}else {System.out.println("infant number should not be more than adult number");
+		System.exit(0);
 		}
+		
 		
 		WebElement cancel_traveller=driver.findElement(By.xpath("//div[@class='cancel']/div"));
 		cancel_traveller.click();
