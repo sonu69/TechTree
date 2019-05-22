@@ -60,6 +60,10 @@ public class Test {
 				
 				TravellerDetails_Page.add_passengers(driver);
 				
+				TravellerDetails_Page.cont_button(driver).click();
+				
+				
+				
 				
 				
 				
