@@ -23,7 +23,7 @@ public class Search_Inputs {
 	
 	
 	public static void add_destination(WebDriver driver,String destination) {
-		SearchFlight_Page.origin(driver).sendKeys(destination);
+		SearchFlight_Page.destination(driver).sendKeys(destination);
 		Actions act = new Actions(driver);
 		WebElement dest_add=driver.findElement(By.xpath("//div[@class='ctyname' and text()='Dubai (DXB)']"));
 		act.moveToElement(dest_add).build().perform();

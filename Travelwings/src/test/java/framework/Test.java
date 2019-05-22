@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import actions.FlightSelect_Page;
 import actions.Search_Inputs;
 import pageObjects.Itinerary_Page;
+import pageObjects.SearchFlight_Page;
 import pageObjects.TravellerDetails_Page;
 import pageObjects.YourEmailId_Page;
 
@@ -21,34 +22,21 @@ public class Test {
 				driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 				driver.get("https://test.techtreeit.in/");
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
 				
-				driver.findElement(By.id("origin_0")).sendKeys("del");
-				Actions act = new Actions(driver);
+				Search_Inputs.add_origin(driver, "del");
 				
-				WebElement origin_add=driver.findElement(By.xpath("//div[@class='ctyname' and text()='New Delhi (DEL)']"));
-				act.moveToElement(origin_add).build().perform();
-				origin_add.click();
-				
-				driver.findElement(By.id("destination_0")).sendKeys("dxb");
-				WebElement dest_add=driver.findElement(By.xpath("//div[@class='ctyname' and text()='Dubai (DXB)']"));
-				act.moveToElement(dest_add).build().perform();
-				dest_add.click();
-				
-	
+				Search_Inputs.add_destination(driver, "dxb");
+
 				Search_Inputs.journeydate(driver, "august", "25");
 				
 				Search_Inputs.returndate(driver, "september", "29");
-				
 				
 				Search_Inputs.pax_list(driver, 2, 2, 2);
 				
 				Thread.sleep(2000);
 				
-				WebElement lets_play=driver.findElement(By.xpath("//button[@class='bttn-primary']"));
-
-				Waits.ewait(driver, lets_play,10);
-				
-				lets_play.click();
+				SearchFlight_Page.search_flight(driver).click();
 				
 				Thread.sleep(5000);
 				
@@ -61,17 +49,6 @@ public class Test {
 				TravellerDetails_Page.add_passengers(driver);
 				
 				TravellerDetails_Page.cont_button(driver).click();
-				
-				
-				
-				
-				
-				
-
-				
-				
-				
-				
 				
 
 
