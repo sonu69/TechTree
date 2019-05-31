@@ -26,6 +26,7 @@ public class Test {
 				
 				Search_Inputs.add_origin(driver, "del");
 				
+				
 				Search_Inputs.add_destination(driver, "dxb");
 
 				Search_Inputs.journeydate(driver, "august", "25");

@@ -7,11 +7,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import framework.ExcelUtils;
+
 public class TravellerDetails_Page {
 	
 	private static WebElement element;
 	
 	public static void add_adult(WebDriver driver) {
+		
 		List<WebElement> titles= driver.findElements(By.xpath("//select[@name='Title']"));
 		
 		List<WebElement> firstname = driver.findElements(By.xpath("//div[text()='First Name']/../div[2]/input"));
@@ -33,7 +36,10 @@ public class TravellerDetails_Page {
 		for(int i=0;i<size;i++) {
 			
 			Select sl = new Select(titles.get(i));
+			
 			sl.selectByVisibleText("Mr.");
+			
+			
 			
 			firstname.get(i).sendKeys("sonu");
 			
