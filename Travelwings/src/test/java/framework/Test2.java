@@ -28,7 +28,7 @@ public class Test2 {
 				driver.get("https://newuat.travelwings.com/");
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		String origin = "CMB";
+		String origin = "Ban";
 		String destination = "Sharjah";
 		
 		driver.findElement(By.id("origin_0")).sendKeys(origin);
