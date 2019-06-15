@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 public class FlightSelect_Page {
 	
 	public static void select_flight(WebDriver driver,String flightname) {
-
+		
 		List<WebElement> flights=driver.findElements(By.xpath("//p[@class='travel-company-name ng-binding']"));
 		
 		List<WebElement> select_buttons=driver.findElements(By.xpath("//button[@class='bttn-search']"));
@@ -20,9 +20,31 @@ public class FlightSelect_Page {
 				select_buttons.get(j).click();
 				break;
 			}	
-			
 		}
-
 	}
 
+	
+	
+	public static void select_flight(WebDriver driver) {
+		
+		List<WebElement> select_buttons=driver.findElements(By.xpath("//button[@class='bttn-search']"));
+		
+		select_buttons.get(0).click();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

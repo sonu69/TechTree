@@ -44,11 +44,13 @@ public class Test {
 				String return_date="24";
 				Search_Inputs.returndate(driver, return_month, return_date);
 				
-				int adult = 2;
+				int adult = 1;
 				int child = 0;
 				int infants = 0;
 				
 				Search_Inputs.pax_list(driver, adult, child, infants);
+				
+				Search_Inputs.fligh_tname(driver, "Etihad");
 				
 				Thread.sleep(2000);
 				
@@ -56,7 +58,7 @@ public class Test {
 				
 				Thread.sleep(10000);
 				
-				FlightSelect_Page.select_flight(driver, "Spicejet");
+				FlightSelect_Page.select_flight(driver);
 				
 				//IndiGo Airlines
 				//Emirates
@@ -81,3 +83,5 @@ public class Test {
 	}
 
 }
+
+//https://sqa.stackexchange.com/questions/10342/how-to-find-element-using-contains-in-xpath

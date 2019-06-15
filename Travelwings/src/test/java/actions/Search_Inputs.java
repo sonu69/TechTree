@@ -130,10 +130,21 @@ public class Search_Inputs {
 	
 	}
 	
+	public static void elementlocator(WebDriver driver,String airportname) {
+		WebElement element = driver.findElement(By.xpath("//div[@class='ctyname' and contains(text(),'"+airportname+"')]"));
+		Actions act = new Actions(driver);
+		act.moveToElement(element).build().perform();
+		element.click();
+	}
 	
-	public static void fligh_tname(WebDriver driver) {
+	
+	public static void fligh_tname(WebDriver driver,String flightname) {
 		SearchFlight_Page.advance_search(driver).click();
-		driver.findElement(By.xpath("//div[@class='autocomplete-list ng-hide']")).sendKeys("Etihad");
+		driver.findElement(By.xpath("//input[@ng-model='inputValue']")).sendKeys(flightname);
+		WebElement element = driver.findElement(By.xpath("//div[@id='mCSB_2_container']/li[contains(text(),'"+flightname+"')]"));
+		Actions act = new Actions(driver);
+		act.moveToElement(element).build().perform();
+		element.click();
 		
 	}
 	

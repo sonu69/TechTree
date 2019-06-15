@@ -13,10 +13,12 @@ static XSSFSheet sh;
 
 
 	public static void excel() throws IOException {
-		File fl = new File(".//Data//Test_Data.xlsx");
+		File fl = new File("/home/ttuser/git/Techtree/Travelwings/Data/Test_Data.xlsx");
 		FileInputStream fis = new FileInputStream(fl);
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 		sh = wb.getSheetAt(0);
+		
+		
 	}
 	
 	
