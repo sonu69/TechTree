@@ -12,23 +12,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.SearchFlight_Page;
 
 public class Search_Inputs {
-	
+		
 	public static void add_origin(WebDriver driver,String origin) {
+		
 		SearchFlight_Page.origin(driver).sendKeys(origin);
-		Actions act = new Actions(driver);
-		WebElement origin_add=driver.findElement(By.xpath("//div[@class='ctyname' and text()='New Delhi (DEL)']"));
-		act.moveToElement(origin_add).build().perform();
-		origin_add.click();
+		
+		SearchFlight_Page.elementlocator(driver, origin);
+		
+//		Actions act = new Actions(driver);
+//		WebElement origin_add=driver.findElement(By.xpath("//div[@class='ctyname' and text()='New Delhi (DEL)']"));
+//		act.moveToElement(origin_add).build().perform();
+//		origin_add.click();
+
 	}
 	
-	
+
 	public static void add_destination(WebDriver driver,String destination) {
+
 		SearchFlight_Page.destination(driver).sendKeys(destination);
-		Actions act = new Actions(driver);
-		WebElement dest_add=driver.findElement(By.xpath("//div[@class='ctyname' and text()='Dubai (DXB)']"));
-		act.moveToElement(dest_add).build().perform();
-		dest_add.click();
+		
+		SearchFlight_Page.elementlocator(driver, destination);
+
 	}
+	
+
 	
 	public static void journeydate(WebDriver driver,String departing_month,String departing_day) {
 		SearchFlight_Page.journey_date(driver).click();
@@ -124,6 +131,11 @@ public class Search_Inputs {
 	}
 	
 	
+	public static void fligh_tname(WebDriver driver) {
+		SearchFlight_Page.advance_search(driver).click();
+		driver.findElement(By.xpath("//div[@class='autocomplete-list ng-hide']")).sendKeys("Etihad");
+		
+	}
 	
 	
 

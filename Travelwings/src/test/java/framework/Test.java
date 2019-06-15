@@ -6,7 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+
+import actions.BookingDetail_Page;
 import actions.FlightSelect_Page;
+import actions.Payment_Actions;
 import actions.Search_Inputs;
 import pageObjects.Itinerary_Page;
 import pageObjects.SearchFlight_Page;
@@ -23,25 +26,42 @@ public class Test {
 				driver.get("https://test.techtreeit.in/");
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+				String origin = "Delhi";
+				String destination = "DXB";
 				
-				Search_Inputs.add_origin(driver, "del");
-				
-				
-				Search_Inputs.add_destination(driver, "dxb");
+				Search_Inputs.add_origin(driver, origin);
+				Search_Inputs.add_destination(driver, destination);
 
-				Search_Inputs.journeydate(driver, "august", "25");
+				//Search_Inputs.journeydate(driver, "august", "25");
 				
-				Search_Inputs.returndate(driver, "september", "29");
+				String journey_month="July";
+				String journey_date="18";
+				Search_Inputs.journeydate(driver, journey_month, journey_date);
 				
-				Search_Inputs.pax_list(driver, 2, 2, 2);
+				//Search_Inputs.returndate(driver, "september", "29");
+				
+				String return_month="July";
+				String return_date="24";
+				Search_Inputs.returndate(driver, return_month, return_date);
+				
+				int adult = 2;
+				int child = 0;
+				int infants = 0;
+				
+				Search_Inputs.pax_list(driver, adult, child, infants);
 				
 				Thread.sleep(2000);
 				
 				SearchFlight_Page.search_flight(driver).click();
 				
-				Thread.sleep(5000);
+				Thread.sleep(10000);
 				
 				FlightSelect_Page.select_flight(driver, "Spicejet");
+				
+				//IndiGo Airlines
+				//Emirates
+				//Etihad
+				//Oman Air
 				
 				Itinerary_Page.continue_itinerary(driver).click();
 				
@@ -51,6 +71,11 @@ public class Test {
 				
 				TravellerDetails_Page.cont_button(driver).click();
 				
+				Payment_Actions.payment_action(driver);
+				
+				BookingDetail_Page.booking_status(driver);
+				
+				BookingDetail_Page.booking_detail(driver);
 
 
 	}

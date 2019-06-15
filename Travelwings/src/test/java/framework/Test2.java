@@ -8,17 +8,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import actions.Search_Inputs;
+
 public class Test2 {
 	
 	static WebDriver driver;
 	static WebElement element;
-	
-	public static void elementlocator(String airportname) {
-		element = driver.findElement(By.xpath("//div[@class='ctyname' and contains(text(),'"+airportname+"')]"));
-		Actions act = new Actions(driver);
-		act.moveToElement(element).build().perform();
-		element.click();
-	}
 
 	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
@@ -28,14 +23,11 @@ public class Test2 {
 				driver.get("https://newuat.travelwings.com/");
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		String origin = "Ban";
+		String origin = "Delhi";
 		String destination = "Sharjah";
 		
-		driver.findElement(By.id("origin_0")).sendKeys(origin);
-		Test2.elementlocator(origin);
-		
-		driver.findElement(By.id("destination_0")).sendKeys(destination);
-		Test2.elementlocator(destination);
+		Search_Inputs.add_origin(driver, origin);
+		Search_Inputs.add_destination(driver, destination);
 
 	}
 

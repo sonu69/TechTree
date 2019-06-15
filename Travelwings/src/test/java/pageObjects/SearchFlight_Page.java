@@ -3,10 +3,18 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class SearchFlight_Page {
 	
 	private static WebElement element;
+	
+	public static void elementlocator(WebDriver driver,String airportname) {
+		element = driver.findElement(By.xpath("//div[@class='ctyname' and contains(text(),'"+airportname+"')]"));
+		Actions act = new Actions(driver);
+		act.moveToElement(element).build().perform();
+		element.click();
+	}
 	
 	public static WebElement origin(WebDriver driver) {
 		element = driver.findElement(By.id("origin_0"));
@@ -104,7 +112,10 @@ public class SearchFlight_Page {
 		return element;
 	}
 	
-	
+	public static WebElement advance_search(WebDriver driver) {
+		element = driver.findElement(By.xpath("//input[@id='AdvacedSearch']"));
+		return element;
+	}
 	
 	
 

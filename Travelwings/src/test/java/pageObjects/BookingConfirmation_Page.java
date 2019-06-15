@@ -21,10 +21,12 @@ private static WebElement element;
 		return element;
 	}
 	
-
+	
 	public static WebElement ttl_amt(WebDriver driver) {
 		element = driver.findElement(By.xpath("//div[@class='amount']/span[@class='ng-binding']"));
 		return element;
 	}
 
+	
+	
 }

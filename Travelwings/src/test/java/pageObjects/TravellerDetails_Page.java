@@ -31,44 +31,107 @@ public class TravellerDetails_Page {
 		
 		List<WebElement> adults = driver.findElements(By.xpath("//h6[contains(text(),'Adult')]"));
 		
-		int size = adults.size();
+		List<WebElement> dob_year = driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']"));
 		
-		for(int i=0;i<size;i++) {
+		List<WebElement> dob_month = driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']"));
+		
+		List<WebElement> exp_year = driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']"));
+		
+		List<WebElement> exp_month = driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']"));
+		
+		List <WebElement> nationality = driver.findElements(By.xpath("//select[@id='countryId']"));
+		
+		
+//		int size = adults.size();
+//		System.out.println(size);
+		
+		//for(int i=0;i<size;i++) {
 			
-			Select sl = new Select(titles.get(i));
+			Select sl0 = new Select(titles.get(0));
 			
-			sl.selectByVisibleText("Mr.");
+			sl0.selectByVisibleText("Mr.");
 			
+			firstname.get(0).sendKeys("sonu");
 			
+			lastname.get(0).sendKeys("kumar");
 			
-			firstname.get(i).sendKeys("sonu");
+			dob.get(0).click();
+			//Select sly=new Select(dob_year.get(0));
+			Select d_year0=new Select(driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")).get(0));
+			d_year0.selectByVisibleText("1992");
 			
-			lastname.get(i).sendKeys("kumar");
-			
-			dob.get(i).click();
-			Select sly=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
-			sly.selectByVisibleText("1992");
-			Select slm=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
-			slm.selectByVisibleText("Jul");
+			//Select slm=new Select(dob_month.get(0));
+			Select d_month0=new Select(driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")).get(0));
+			d_month0.selectByVisibleText("Jul");
 			
 			driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='3']")).click();
 			
-			phone.get(i).sendKeys("9905040207");
+			phone.get(0).sendKeys("9905040207");
 			
-			passport.get(i).sendKeys("J8965230");
+			passport.get(0).sendKeys("J8965230");
 			
-			exp_date.get(i).click();
-			Select sly1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
-			sly1.selectByVisibleText("2020");
+			exp_date.get(0).click();
+			//Select sly1=new Select(exp_year.get(0));
+			Select e_year0=new Select(driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")).get(0));
+			e_year0.selectByVisibleText("2020");
 			
-			Select slm1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
-			slm1.selectByVisibleText("Jul");
+			//Select slm1=new Select(exp_month.get(0));
+			Select e_month0=new Select(driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")).get(0));
+			e_month0.selectByVisibleText("Jul");
 			
 			driver.findElement(By.xpath("//a[text()='7']")).click();
 			
-		}		
+			Select national0 = new Select(driver.findElements(By.xpath("//select[@id='countryId']")).get(0));
+			national0.selectByVisibleText("India");
+			
+			
+			
+			//2nd Adult
+			
+			Select sl1 = new Select(titles.get(1));
+			
+			sl1.selectByVisibleText("Mr.");
+			
+			firstname.get(1).sendKeys("Ashish");
+			
+			lastname.get(1).sendKeys("kumar");
+			
+			dob.get(1).click();
+			//Select sly=new Select(dob_year.get(0));
+			//Select d_year1=new Select(driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")).get(1));
+			Select d_year1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
+			d_year1.selectByVisibleText("1994");
+			
+			//Select slm=new Select(dob_month.get(0));
+			//Select d_month1=new Select(driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")).get(1));
+			Select d_month1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
+			d_month1.selectByVisibleText("Nov");
+			
+			driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='17']")).click();
+			
+			phone.get(1).sendKeys("9874563210");
+			
+			passport.get(1).sendKeys("H8965230");
+			
+			exp_date.get(1).click();
+			//Select sly1=new Select(exp_year.get(0));
+			Select e_year1=new Select(driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")).get(0));
+			e_year1.selectByVisibleText("2021");
+			
+			//Select slm1=new Select(exp_month.get(0));
+			Select e_month1=new Select(driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")).get(0));
+			e_month1.selectByVisibleText("Jul");
+			
+			driver.findElement(By.xpath("//a[text()='8']")).click();
+			
+			Select national1 = new Select(driver.findElements(By.xpath("//select[@id='countryId']")).get(1));
+			national1.selectByVisibleText("India");
+			
 	}
 		
+	
+	
+	
 	
 	public static void add_child(WebDriver driver) {
 		List<WebElement> titles= driver.findElements(By.xpath("//select[@name='Title']"));
@@ -198,9 +261,6 @@ public class TravellerDetails_Page {
 			element = driver.findElement(By.xpath("//button[text()='CONTINUE' and @class='bttn-yellow']"));
 			return element;
 		}
-		
-		
-		
 
 
 }
