@@ -93,9 +93,9 @@ public class Flights {
 		WebElement traveller = driver.findElement(By.xpath("//span[@class='traveler-text']"));
 		traveller.click();
 		
-		int a = 1;
-		int c=0;
-		int i=0;
+		int a = 2;
+		int c=2;
+		int i=1;
 		
 		for(int n=1;n<a;n++){
 			WebElement adult_count=driver.findElement(By.xpath("//button[@data-ng-click='flight.addAdult()']"));
@@ -124,6 +124,8 @@ public class Flights {
 		lets_play.click();
 		
 		Thread.sleep(5000);
+
+		
 		
 		List<WebElement> flights=driver.findElements(By.xpath("//p[@class='travel-company-name ng-binding']"));
 		
@@ -137,11 +139,14 @@ public class Flights {
 			}
 		}
 
+		
+		
 	Thread.sleep(5000);
 	
 	//WebElement continue_popup=driver.findElement(By.xpath("//button[@class='btn bttn-yellow yellow-bttn ng-binding']"));
 	//WebElement continue_popup=driver.findElement(By.xpath("//div[@class='col-md-6']"));
 	//WebElement continue_popup=driver.findElement(By.xpath("//button[@class='btn bttn-grey-bg ng-binding']"));
+	
 	
 	try {
 	
@@ -151,6 +156,8 @@ public class Flights {
 	catch(Exception e) {
 		System.out.println("price has not changed");
 	}
+	
+	
 	
 	driver.findElement(By.xpath("//button[text()='CONTINUE' and @class='bttn-yellow yellow-button ng-scope']")).click();
 	
