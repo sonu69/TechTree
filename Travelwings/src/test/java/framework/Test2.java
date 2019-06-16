@@ -23,11 +23,11 @@ public class Test2 {
 	static WebElement element;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
+		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver.exe");
 		driver = new ChromeDriver();
 				driver.manage().window().maximize();
 				driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-				driver.get("https://test.techtreeit.in");
+				driver.get("https://newuat.travelwings.com/");
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 				String origin = "Delhi";
@@ -54,7 +54,7 @@ public class Test2 {
 				
 				Search_Inputs.fligh_tname(driver, "Etihad");
 				
-				Thread.sleep(2000);
+				Thread.sleep(10000);
 				
 				SearchFlight_Page.search_flight(driver).click();
 				
