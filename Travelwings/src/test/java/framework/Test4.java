@@ -1,22 +1,22 @@
 package framework;
 
-import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
-public class Test3 {
-	
+public class Test4 {
+
 	static WebDriver driver;
 	static WebElement element;
 
-	public static void main(String[] args) throws IOException {
-		
-		
+	
+	
+	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver.exe");
 		driver = new ChromeDriver();
 				driver.manage().window().maximize();
@@ -26,18 +26,12 @@ public class Test3 {
 				
 				driver.findElement(By.xpath("//input[@id='origin_0']")).sendKeys("del");
 				
-				List <WebElement> li = driver.findElements(By.xpath("//div[@class='ctyname']"));
-
-				for(int i=0; i < li.size();i++) {
+				Actions act = new Actions(driver);
+				act.keyDown(Keys.CONTROL).click(driver.findElement(By.xpath("//div[@class='ctyname' and contains(text(),'Maldonado')]"))).build().perform();
 				
-					if (li.get(i).getText().contains("Maldonado")) {
-						
-						li.get(i).click();
-					}
-				
-				
-				}
 
 	}
 
 }
+
+//http://www.qualitylearning.in/?p=1823
