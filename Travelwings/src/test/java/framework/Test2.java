@@ -8,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import actions.FlightSelect_Page;
@@ -23,11 +22,11 @@ public class Test2 {
 	static WebElement element;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
 		driver = new ChromeDriver();
 				driver.manage().window().maximize();
 				driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-				driver.get("https://newuat.travelwings.com/");
+				driver.get("https://test.techtreeit.in");
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 				String origin = "Delhi";
@@ -46,9 +45,9 @@ public class Test2 {
 				String return_date="24";
 				Search_Inputs.returndate(driver, return_month, return_date);
 				
-				int adult = 2;
-				int child = 2;
-				int infants = 2;
+				int adult = 1;
+				int child = 0;
+				int infants = 0;
 				
 				Search_Inputs.pax_list(driver, adult, child, infants);
 				
@@ -99,7 +98,7 @@ public class Test2 {
 					String last_name = ExcelUtils.getStringValue(17+i, 2);
 					lastname.get(i).sendKeys(last_name);
 					
-					dob.get(i).click();
+				dob.get(i).click();
 					Select d_year0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
 					String d_year = ExcelUtils.getStringValue(17+i, 3);
 					d_year0.selectByVisibleText(d_year);
@@ -113,10 +112,7 @@ public class Test2 {
 	
 	phone.get(i).sendKeys("9905040207");
 	
-	
 	passport.get(i).sendKeys("J8965230");
-	
-	
 	
 	exp_date.get(i).click();
 	Select sly1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
@@ -127,14 +123,17 @@ public class Test2 {
 	Select slm1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
 	slm1.selectByVisibleText("Jul");
 	
+	
+	
 	driver.findElement(By.xpath("//a[text()='7']")).click();
 	
+	Select nation = new Select(nationality.get(i));
+	String nat = ExcelUtils.getStringValue(17+i, 5);
+	nation.selectByVisibleText(nat);
 	
-	
-	
-	
-				}
+	}
 				
+	
 				
 				
 				
