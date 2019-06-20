@@ -44,8 +44,10 @@ public class Test3 {
 
 	public static void main(String[] args) throws IOException {
 		
+		System.out.println(ExcelUtils.getStringValue(17, 0));
 		
-		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver.exe");
+		
+		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
 		driver = new ChromeDriver();
 				driver.manage().window().maximize();
 				driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
