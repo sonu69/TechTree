@@ -13,10 +13,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Test3 {
-
+	
 	static WebDriver driver;
 	static WebElement element;
-	
+
+
 	public void selectOptionWithText(String textToSelect) {
 		try {
 			WebElement autoOptions = driver.findElement(By.xpath("//div[@class='ctyname']"));
@@ -42,18 +43,29 @@ public class Test3 {
 	
 
 	public static void main(String[] args) throws IOException {
-
-		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
+		
+		
+		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver.exe");
 		driver = new ChromeDriver();
 				driver.manage().window().maximize();
 				driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-				driver.get("https://test.techtreeit.in");
+				driver.get("https://newuat.travelwings.com/");
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				
+				driver.findElement(By.xpath("//input[@id='origin_0']")).sendKeys("del");
 				
+				List <WebElement> li = driver.findElements(By.xpath("//div[@class='ctyname']"));
+
+				for(int i=0; i < li.size();i++) {
 				
+					if (li.get(i).getText().contains("Maldonado")) {
+						
+						li.get(i).click();
+					}
 				
-				
+				}
+
+
 	}
 
 }
