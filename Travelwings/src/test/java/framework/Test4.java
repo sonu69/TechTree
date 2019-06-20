@@ -28,8 +28,6 @@ public class Test4 {
 				
 				Actions act = new Actions(driver);
 				act.keyDown(Keys.CONTROL).click(driver.findElement(By.xpath("//div[@class='ctyname' and contains(text(),'Maldonado')]"))).build().perform();
-				
-
 	}
 
 }
