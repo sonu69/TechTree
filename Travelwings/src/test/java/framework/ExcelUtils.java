@@ -30,9 +30,22 @@ static XSSFSheet sh;
 	
 	
 	
-	public static double getIntValue(int row, int cell) throws IOException {
+	public static int getIntValue(int row, int cell) throws IOException {
 		excel();
-		return sh.getRow(row).getCell(cell).getNumericCellValue();
+		//return sh.getRow(row).getCell(cell).getNumericCellValue();
+		int data = (int) sh.getRow(row).getCell(cell).getNumericCellValue();
+		return data;
+	}
+	
+	
+	public static void getIntValue1(int row, int cell) throws IOException {
+		File fl = new File(".//Data//Test_Data.xlsx");
+		FileInputStream fis = new FileInputStream(fl);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		sh = wb.getSheetAt(0);
+		int data = (int) sh.getRow(row).getCell(cell).getNumericCellValue();
+		System.out.println(data);
+
 	}
 	
 	

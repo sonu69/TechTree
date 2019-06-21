@@ -104,10 +104,15 @@ public class Search_Inputs {
 	}
 	
 	
-	public static void pax_list(WebDriver driver,int adult,int child, int infants) {
+	public static void pax_list(WebDriver driver) throws IOException {
 		
 		SearchFlight_Page.pax(driver).click();
 		
+		//String adult = ExcelUtils.getStringValue(1, 7);
+		int adult = ExcelUtils.getIntValue(1, 7);
+		int child = ExcelUtils.getIntValue(1, 8);
+		int infants = ExcelUtils.getIntValue(1, 9);
+
 		
 		for(int n=1;n<adult;n++){
 			WebElement adult_count=driver.findElement(By.xpath("//button[@data-ng-click='flight.addAdult()']"));

@@ -22,6 +22,8 @@ public class Test2 {
 	static WebElement element;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
+
+		
 		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
 		driver = new ChromeDriver();
 				driver.manage().window().maximize();
@@ -29,10 +31,8 @@ public class Test2 {
 				driver.get("https://test.techtreeit.in");
 				driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 
-				Search_Inputs.add_origin(driver);
-				Search_Inputs.add_destination(driver);
 				
-				Search_Inputs.flight_name(driver);
+				Search_Inputs.pax_list(driver);
 				
 				
 				

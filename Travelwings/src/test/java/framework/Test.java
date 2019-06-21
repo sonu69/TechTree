@@ -43,13 +43,7 @@ public class Test {
 				String return_date="24";
 				Search_Inputs.returndate(driver, return_month, return_date);
 				
-				int adult = 1;
-				int child = 1;
-				int infants = 1;
-				
-				Search_Inputs.pax_list(driver, adult, child, infants);
-				
-				//Search_Inputs.fligh_tname(driver, "Etihad");
+				Search_Inputs.pax_list(driver);
 				
 				Search_Inputs.flight_name(driver);
 				
@@ -60,11 +54,6 @@ public class Test {
 				Thread.sleep(10000);
 				
 				FlightSelect_Page.select_flight(driver);
-				
-				//IndiGo Airlines
-				//Emirates
-				//Etihad
-				//Oman Air
 				
 				Itinerary_Page.continue_itinerary(driver).click();
 				
