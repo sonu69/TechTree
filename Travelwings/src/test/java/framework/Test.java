@@ -34,13 +34,13 @@ public class Test {
 				//Search_Inputs.journeydate(driver, "august", "25");
 				
 				String journey_month="July";
-				String journey_date="18";
+				String journey_date="20";
 				Search_Inputs.journeydate(driver, journey_month, journey_date);
 				
 				//Search_Inputs.returndate(driver, "september", "29");
 				
 				String return_month="July";
-				String return_date="24";
+				String return_date="26";
 				Search_Inputs.returndate(driver, return_month, return_date);
 				
 				Search_Inputs.pax_list(driver);
