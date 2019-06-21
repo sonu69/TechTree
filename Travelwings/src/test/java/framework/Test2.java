@@ -22,59 +22,20 @@ public class Test2 {
 	static WebElement element;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
 		driver = new ChromeDriver();
 				driver.manage().window().maximize();
-				driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-				driver.get("https://newuat.travelwings.com");
-				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
+				driver.get("https://test.techtreeit.in");
+				driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 
-				String origin = "Delhi";
-				String destination = "DXB";
+				Search_Inputs.add_origin(driver);
+				Search_Inputs.add_destination(driver);
 				
-				Search_Inputs.add_origin(driver, origin);
-				Search_Inputs.add_destination(driver, destination);
-
-				//Search_Inputs.journeydate(driver, "august", "25");
-				String journey_month="July";
-				String journey_date="18";
-				Search_Inputs.journeydate(driver, journey_month, journey_date);
-				
-				//Search_Inputs.returndate(driver, "september", "29");
-				String return_month="July";
-				String return_date="24";
-				Search_Inputs.returndate(driver, return_month, return_date);
-				
-				int adult = 2;
-				int child = 2;
-				int infants = 2;
-				
-				Search_Inputs.pax_list(driver, adult, child, infants);
-				
-				Search_Inputs.fligh_tname(driver, "Etihad");
-				
-				Thread.sleep(10000);
-				
-				SearchFlight_Page.search_flight(driver).click();
-				
-				Thread.sleep(10000);
-				FlightSelect_Page.select_flight(driver);
-				//IndiGo Airlines
-				//Emirates
-				//Etihad
-				//Oman Air
-				Itinerary_Page.continue_itinerary(driver).click();	
-				
-				Thread.sleep(5000);
-				
-				YourEmailId_Page.account_login(driver, "sonu.kumar@techtreeit.com", "sonukumar");
+				Search_Inputs.flight_name(driver);
 				
 				
-//				driver.findElement(By.xpath("//div[@class='user-name']/input")).sendKeys("sonu.kumar@techtreeit.com");
-//				
-//				driver.findElement(By.xpath("//button[@id='submit-form']")).click();
 				
-				Test3.add_pax();
 	
 	}
 				

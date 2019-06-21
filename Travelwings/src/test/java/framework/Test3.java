@@ -15,10 +15,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Test3 {
 	
-	private static WebElement element;
-	private static WebDriver driver;
+	//private static WebElement element;
+	//private static WebDriver driver;
 	
-	public static void add_pax() throws IOException {
+	public static void add_pax(WebDriver driver) throws IOException {
 		
 	List<WebElement> adults = driver.findElements(By.xpath("//h6[contains(text(),'Adult')]"));
 	
@@ -59,13 +59,12 @@ public class Test3 {
 		lastname.get(i).sendKeys(last_name);
 		dob.get(i).click();
 		Select d_year0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
-		String d_year = ExcelUtils.getStringValue(17+i, 3);
+		String d_year = ExcelUtils.getStringValue(17+i, 4);
 		d_year0.selectByVisibleText(d_year);
 		
-
 		Select d_month0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
 
-		String d_month=ExcelUtils.getStringValue(17+i, 4);
+		String d_month=ExcelUtils.getStringValue(17+i, 5);
 
 		d_month0.selectByVisibleText(d_month);
 		
@@ -115,13 +114,13 @@ public class Test3 {
 		dob.get(j+m).click();
 		
 		Select d_year0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
-		String d_year = ExcelUtils.getStringValue(26+j, 3);
+		String d_year = ExcelUtils.getStringValue(26+j, 4);
 		d_year0.selectByVisibleText(d_year);
 		
 
 		Select d_month0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
 
-		String d_month=ExcelUtils.getStringValue(26+j, 4);
+		String d_month=ExcelUtils.getStringValue(26+j, 5);
 
 		d_month0.selectByVisibleText(d_month);
 		
@@ -133,7 +132,7 @@ public class Test3 {
 		String passport_exp = ExcelUtils.getStringValue(26+j, 8);
 		passport.get(j+m).sendKeys(passport_exp);
 
-		exp_date.get(j).click();
+		exp_date.get(j+m).click();
 
 		Select sly1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
 
@@ -170,12 +169,12 @@ public class Test3 {
 		
 		dob.get(k+l).click();
 		Select d_year0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
-		String d_year = ExcelUtils.getStringValue(38+k, 3);
+		String d_year = ExcelUtils.getStringValue(38+k, 4);
 		d_year0.selectByVisibleText(d_year);
 		
 		Select d_month0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
 
-		String d_month=ExcelUtils.getStringValue(38+k, 4);
+		String d_month=ExcelUtils.getStringValue(38+k, 5);
 
 		d_month0.selectByVisibleText(d_month);
 		
@@ -213,9 +212,7 @@ public class Test3 {
 	
 	public static void main(String[] args) throws IOException {
 	
-	
-	
-	
+
 	}
 
 }

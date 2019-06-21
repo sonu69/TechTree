@@ -1,8 +1,12 @@
 package pageObjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import framework.ExcelUtils;
 
 public class YourEmailId_Page {
 	
@@ -15,7 +19,11 @@ public class YourEmailId_Page {
 	}
 	
 	
-	public static void account_login(WebDriver driver,String username,String password) {
+	public static void account_login(WebDriver driver) throws IOException {
+		
+		String username = ExcelUtils.getStringValue(1, 11);
+		
+		String password = ExcelUtils.getStringValue(1, 12);
 		
 		driver.findElement(By.xpath("//input[@data-ng-model='booking.availableAccount.checked']")).click();
 		

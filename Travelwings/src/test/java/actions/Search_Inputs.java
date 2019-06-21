@@ -1,5 +1,6 @@
 package actions;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -9,12 +10,15 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import framework.ExcelUtils;
 import pageObjects.SearchFlight_Page;
 
 public class Search_Inputs {
 		
-	public static void add_origin(WebDriver driver,String origin) {
+	public static void add_origin(WebDriver driver) throws IOException {
 		
+		
+		String origin = ExcelUtils.getStringValue(1, 1);
 		SearchFlight_Page.origin(driver).sendKeys(origin);
 		
 		SearchFlight_Page.elementlocator(driver, origin);
@@ -27,8 +31,9 @@ public class Search_Inputs {
 	}
 	
 
-	public static void add_destination(WebDriver driver,String destination) {
+	public static void add_destination(WebDriver driver) throws IOException {
 
+		String destination = ExcelUtils.getStringValue(1, 2);
 		SearchFlight_Page.destination(driver).sendKeys(destination);
 		
 		SearchFlight_Page.elementlocator(driver, destination);
@@ -138,7 +143,10 @@ public class Search_Inputs {
 	}
 	
 	
-	public static void fligh_tname(WebDriver driver,String flightname) {
+	public static void flight_name(WebDriver driver) throws IOException {
+		
+		String flightname = ExcelUtils.getStringValue(1, 10);
+		
 		SearchFlight_Page.advance_search(driver).click();
 		driver.findElement(By.xpath("//input[@ng-model='inputValue']")).sendKeys(flightname);
 		WebElement element = driver.findElement(By.xpath("//div[@id='mCSB_2_container']/li[contains(text(),'"+flightname+"')]"));
