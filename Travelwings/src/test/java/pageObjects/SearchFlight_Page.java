@@ -16,20 +16,24 @@ public class SearchFlight_Page {
 		element.click();
 	}
 	
+	
 	public static WebElement origin(WebDriver driver) {
 		element = driver.findElement(By.id("origin_0"));
 		return element;
 	}
+	
 	
 	public static WebElement destination(WebDriver driver) {
 		element = driver.findElement(By.id("destination_0"));
 		return element;
 	}
 	
+	
 	public static WebElement journey_date(WebDriver driver) {
 		element = driver.findElement(By.id("journeyDate_0"));
 		return element;
 	}
+	
 	
 	public static WebElement return_date(WebDriver driver) {
 		element = driver.findElement(By.id("returnDate_0"));

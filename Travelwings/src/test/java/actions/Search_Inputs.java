@@ -28,8 +28,8 @@ public class Search_Inputs {
 //		act.moveToElement(origin_add).build().perform();
 //		origin_add.click();
 
+		
 	}
-	
 
 	public static void add_destination(WebDriver driver) throws IOException {
 
@@ -37,13 +37,37 @@ public class Search_Inputs {
 		SearchFlight_Page.destination(driver).sendKeys(destination);
 		
 		SearchFlight_Page.elementlocator(driver, destination);
-
 	}
 	
+	
+	public static String date(String date) {
+		String splitter[] = date.split("-");
+		String day=splitter[0];
+		return day;
+	}
+	
+	public static String month(String date) {
+		String splitter[] = date.split("-");
+		String month=splitter[1];
+		return month;
+	}
+	
+	public static String year(String date) {
+		String splitter[] = date.split("-");
+		String year = splitter[2];
+		return year;
+	}
 
 	
-	public static void journeydate(WebDriver driver,String departing_month,String departing_day) {
+	public static void journeydate(WebDriver driver) throws IOException {
+		
 		SearchFlight_Page.journey_date(driver).click();
+		
+		String date = ExcelUtils.getStringValue(1, 3);
+		String departing_day = date(date);
+		String departing_month = month(date);
+		//String departing_year = year(date);
+		
 		WebDriverWait wait = new WebDriverWait(driver,10);
 		String month=driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/span[@class='ui-datepicker-month']")).get(0).getText();
 		
@@ -72,9 +96,18 @@ public class Search_Inputs {
 			}
 	}
 	
-	public static void returndate(WebDriver driver,String return_month,String return_day) {
+	public static void returndate(WebDriver driver) throws IOException {
+
+		String date = ExcelUtils.getStringValue(1, 4);
+		System.out.println(date);
+		String return_day = date(date);
+		String return_month = month(date);
 		
 		SearchFlight_Page.return_date(driver).click();
+		
+
+		//String departing_year = year(date);
+		
 		WebDriverWait wait = new WebDriverWait(driver,10);
 		String month=driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/span[@class='ui-datepicker-month']")).get(0).getText();
 		

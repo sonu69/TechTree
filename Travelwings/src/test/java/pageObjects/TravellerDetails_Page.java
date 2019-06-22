@@ -6,8 +6,10 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import actions.Search_Inputs;
 import framework.ExcelUtils;
 
 public class TravellerDetails_Page {
@@ -53,43 +55,46 @@ public class TravellerDetails_Page {
 		firstname.get(i).sendKeys(first_name);
 		String last_name = ExcelUtils.getStringValue(17+i, 2);
 		lastname.get(i).sendKeys(last_name);
+
+		String date = ExcelUtils.getStringValue(17+i, 3);
+		String d_day=Search_Inputs.date(date);
+		String d_month = Search_Inputs.month(date);
+		String d_year = Search_Inputs.year(date);
+		
 		dob.get(i).click();
 		Select d_year0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
-		String d_year = ExcelUtils.getStringValue(17+i, 4);
 		d_year0.selectByVisibleText(d_year);
-		
 
 		Select d_month0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
-
-		String d_month=ExcelUtils.getStringValue(17+i, 5);
-
-		d_month0.selectByVisibleText(d_month);
 		
-		driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='3']")).click();
+		d_month0.selectByVisibleText(d_month);
 
-		String phone_number = ExcelUtils.getStringValue(17+i, 7);
+		driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='"+d_day+"']")).click();
+				
+		String phone_number = ExcelUtils.getStringValue(17+i, 5);
 		phone.get(i).sendKeys(phone_number);
 
-		String passport_exp = ExcelUtils.getStringValue(17+i, 8);
+		String passport_exp = ExcelUtils.getStringValue(17+i, 6);
 		passport.get(i).sendKeys(passport_exp);
-
 		exp_date.get(i).click();
-
+		
+		String expiry_date = ExcelUtils.getStringValue(17+i, 7);
+		String exp_day=Search_Inputs.date(expiry_date);
+		String exp_month = Search_Inputs.month(expiry_date);
+		String exp_year = Search_Inputs.year(expiry_date);
+		
 		Select sly1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
-
-		String exp_year = ExcelUtils.getStringValue(17+i, 9);
 		sly1.selectByVisibleText(exp_year);
 
 		Select slm1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
 
-		String exp_month = ExcelUtils.getStringValue(17+i, 10);
 		slm1.selectByVisibleText(exp_month);
-
-		driver.findElement(By.xpath("//a[text()='7']")).click();
+		
+		driver.findElement(By.xpath("//a[text()='"+exp_day+"']")).click();
 
 		Select nation = new Select(nationality.get(i));
 
-		String country = ExcelUtils.getStringValue(17+i, 12);
+		String country = ExcelUtils.getStringValue(17+i, 8);
 
 		nation.selectByVisibleText(country);
 		
@@ -110,42 +115,45 @@ public class TravellerDetails_Page {
 		
 		dob.get(j+m).click();
 		
-		Select d_year0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
-		String d_year = ExcelUtils.getStringValue(26+j, 4);
-		d_year0.selectByVisibleText(d_year);
+		String date = ExcelUtils.getStringValue(26+j, 3);
+		String d_day=Search_Inputs.date(date);
+		String d_month = Search_Inputs.month(date);
+		String d_year = Search_Inputs.year(date);
 		
-
+		Select d_year0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
+		d_year0.selectByVisibleText(d_year);
+	
 		Select d_month0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
 
-		String d_month=ExcelUtils.getStringValue(26+j, 5);
-
 		d_month0.selectByVisibleText(d_month);
-		
-		driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='3']")).click();
+		driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='"+d_day+"']")).click();
 
-		String phone_number = ExcelUtils.getStringValue(26+j, 7);
+		String phone_number = ExcelUtils.getStringValue(26+j, 5);
 		phone.get(j+m).sendKeys(phone_number);
 
-		String passport_exp = ExcelUtils.getStringValue(26+j, 8);
+		String passport_exp = ExcelUtils.getStringValue(26+j, 6);
 		passport.get(j+m).sendKeys(passport_exp);
 
 		exp_date.get(j+m).click();
 
+		String expiry_date = ExcelUtils.getStringValue(26+j, 7);
+		String exp_day=Search_Inputs.date(expiry_date);
+		String exp_month = Search_Inputs.month(expiry_date);
+		String exp_year = Search_Inputs.year(expiry_date);
+		
 		Select sly1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
 
-		String exp_year = ExcelUtils.getStringValue(26+j, 9);
 		sly1.selectByVisibleText(exp_year);
 
 		Select slm1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
 
-		String exp_month = ExcelUtils.getStringValue(26+j, 10);
 		slm1.selectByVisibleText(exp_month);
 
-		driver.findElement(By.xpath("//a[text()='7']")).click();
+		driver.findElement(By.xpath("//a[text()='"+exp_day+"']")).click();
 
 		Select nation = new Select(nationality.get(j+m));
 
-		String country = ExcelUtils.getStringValue(26+j, 12);
+		String country = ExcelUtils.getStringValue(26+j, 8);
 
 		nation.selectByVisibleText(country);
 		
@@ -165,41 +173,49 @@ public class TravellerDetails_Page {
 		lastname.get(k+l).sendKeys(last_name);
 		
 		dob.get(k+l).click();
+		
+		String date = ExcelUtils.getStringValue(38+k, 3);
+		String d_day=Search_Inputs.date(date);
+		String d_month = Search_Inputs.month(date);
+		String d_year = Search_Inputs.year(date);
+
+		
 		Select d_year0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
-		String d_year = ExcelUtils.getStringValue(38+k, 4);
 		d_year0.selectByVisibleText(d_year);
 		
 		Select d_month0=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
 
-		String d_month=ExcelUtils.getStringValue(38+k, 5);
-
 		d_month0.selectByVisibleText(d_month);
+		driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='"+d_day+"']")).click();
 		
-		driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='3']")).click();
-
-		String phone_number = ExcelUtils.getStringValue(38+k, 7);
+		String phone_number = ExcelUtils.getStringValue(38+k, 5);
 		phone.get(k+l).sendKeys(phone_number);
 
-		String passport_exp = ExcelUtils.getStringValue(38+k, 8);
+		String passport_exp = ExcelUtils.getStringValue(38+k, 6);
 		passport.get(k+l).sendKeys(passport_exp);
 
 		exp_date.get(k+l).click();
 
+		String expiry_date = ExcelUtils.getStringValue(38+k, 7);
+		String exp_day=Search_Inputs.date(expiry_date);
+		String exp_month = Search_Inputs.month(expiry_date);
+		String exp_year = Search_Inputs.year(expiry_date);
+		
+		
 		Select sly1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-year']")));
-
-		String exp_year = ExcelUtils.getStringValue(38+k, 9);
+		
 		sly1.selectByVisibleText(exp_year);
 
 		Select slm1=new Select(driver.findElement(By.xpath("//div[@class='ui-datepicker-title']/select[@class='ui-datepicker-month']")));
 
-		String exp_month = ExcelUtils.getStringValue(38+k, 10);
 		slm1.selectByVisibleText(exp_month);
 
-		driver.findElement(By.xpath("//a[text()='7']")).click();
+		
+		driver.findElement(By.xpath("//a[text()='"+exp_day+"']")).click();
 
 		Select nation = new Select(nationality.get(k+l));
 
-		String country = ExcelUtils.getStringValue(38+k, 12);
+		String country = ExcelUtils.getStringValue(38+k, 8);
 
 		nation.selectByVisibleText(country);
 		

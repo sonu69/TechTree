@@ -15,9 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Test3 {
 	
-	//private static WebElement element;
-	//private static WebDriver driver;
-	
 	public static void add_pax(WebDriver driver) throws IOException {
 		
 	List<WebElement> adults = driver.findElements(By.xpath("//h6[contains(text(),'Adult')]"));
@@ -209,10 +206,18 @@ public class Test3 {
 	}
 }
 
+	public static void date(String date) {
+		String splitter[] = date.split("-");
+		String day=splitter[0];
+		String month=splitter[1];
+		String year = splitter[2];
+		
+	}
+	
 	
 	public static void main(String[] args) throws IOException {
-	
-
+		date(ExcelUtils.getStringValue(1, 3));
+		
 	}
 
 }

@@ -29,19 +29,12 @@ public class Test {
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				
 				Search_Inputs.add_origin(driver);
+				
 				Search_Inputs.add_destination(driver);
 
-				//Search_Inputs.journeydate(driver, "august", "25");
+				Search_Inputs.journeydate(driver);
 				
-				String journey_month="July";
-				String journey_date="20";
-				Search_Inputs.journeydate(driver, journey_month, journey_date);
-				
-				//Search_Inputs.returndate(driver, "september", "29");
-				
-				String return_month="July";
-				String return_date="26";
-				Search_Inputs.returndate(driver, return_month, return_date);
+				Search_Inputs.returndate(driver);
 				
 				Search_Inputs.pax_list(driver);
 				
@@ -66,7 +59,7 @@ public class Test {
 				BookingDetail_Page.booking_status(driver);
 				
 				BookingDetail_Page.booking_detail(driver);
-//gfgfgf
+
 
 	}
 
