@@ -66,7 +66,7 @@ public class Test {
 				BookingDetail_Page.booking_status(driver);
 				
 				BookingDetail_Page.booking_detail(driver);
-
+//gfgfgf
 
 	}
 
