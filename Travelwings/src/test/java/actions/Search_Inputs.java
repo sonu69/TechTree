@@ -142,9 +142,9 @@ public class Search_Inputs {
 		SearchFlight_Page.pax(driver).click();
 		
 		//String adult = ExcelUtils.getStringValue(1, 7);
-		int adult = ExcelUtils.getIntValue(1, 7);
-		int child = ExcelUtils.getIntValue(1, 8);
-		int infants = ExcelUtils.getIntValue(1, 9);
+		int adult = ExcelUtils.getIntValue(1, 5);
+		int child = ExcelUtils.getIntValue(1, 6);
+		int infants = ExcelUtils.getIntValue(1, 7);
 
 		
 		for(int n=1;n<adult;n++){
@@ -183,7 +183,7 @@ public class Search_Inputs {
 	
 	public static void flight_name(WebDriver driver) throws IOException {
 		
-		String flightname = ExcelUtils.getStringValue(1, 10);
+		String flightname = ExcelUtils.getStringValue(1, 8);
 		
 		SearchFlight_Page.advance_search(driver).click();
 		driver.findElement(By.xpath("//input[@ng-model='inputValue']")).sendKeys(flightname);

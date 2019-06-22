@@ -9,7 +9,7 @@ public class BookingDetail_Page {
 	
 	public static void booking_status(WebDriver driver) {
 		
-		Waits.ewait(driver, BookingConfirmation_Page.status_message(driver), 50);
+		Waits.ewait(driver, BookingConfirmation_Page.status_message(driver), 1000);
 		
 		if(BookingConfirmation_Page.status_message(driver).getText().equalsIgnoreCase("Booking Confirmation")) {
 			System.out.println("Booking success");

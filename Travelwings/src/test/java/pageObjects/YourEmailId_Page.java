@@ -19,9 +19,9 @@ public class YourEmailId_Page {
 	
 	public static void account_login(WebDriver driver) throws IOException, InterruptedException {
 		
-		String username = ExcelUtils.getStringValue(1, 11);
+		String username = ExcelUtils.getStringValue(1, 9);
 		
-		String password = ExcelUtils.getStringValue(1, 12);
+		String password = ExcelUtils.getStringValue(1, 10);
 		Thread.sleep(5000);
 		
 		//driver.findElement(By.xpath("//input[@data-ng-model='booking.availableAccount.checked']")).click();
