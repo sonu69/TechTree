@@ -13,6 +13,7 @@ import actions.BookingDetail_Page;
 import actions.FlightSelect_Page;
 import actions.Payment_Actions;
 import actions.Search_Inputs;
+import pageObjects.ChangeCountry_Page;
 import pageObjects.Itinerary_Page;
 import pageObjects.SearchFlight_Page;
 import pageObjects.TravellerDetails_Page;
@@ -22,11 +23,20 @@ public class Test {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
+		
 		WebDriver driver = new ChromeDriver();
-				driver.manage().window().maximize();
-				driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-				driver.get("https://test.techtreeit.in/");
-				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				
+		driver.manage().window().maximize();
+
+		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		
+		driver.get("https://test.techtreeit.in/");
+				
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				
+				ChangeCountry_Page.change_country(driver, "India").click();
+				
+				ChangeCountry_Page.change_currency(driver, "AED").click();
 				
 				Search_Inputs.add_origin(driver);
 				

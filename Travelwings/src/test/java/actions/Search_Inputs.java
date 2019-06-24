@@ -59,7 +59,50 @@ public class Search_Inputs {
 	}
 
 	
-	public static void journeydate(WebDriver driver) throws IOException {
+	public static void journeydate(WebDriver driver) throws InterruptedException, IOException {
+		List <WebElement> journeydate = driver.findElements(By.xpath("//input[contains(@id,'journeyDate_')]"));
+		for(int m=0;m<journeydate.size();m++) {
+			Thread.sleep(2000);
+			journeydate.get(m).click();
+			String journeydat = ExcelUtils.getStringValue(49+m, 3);
+			String departing_day = date(journeydat);
+			String departing_month = month(journeydat);
+			WebDriverWait wait = new WebDriverWait(driver,10);
+			String month=driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/span[@class='ui-datepicker-month']")).get(0).getText();
+			
+			if(month.equalsIgnoreCase(departing_month)) {
+				System.out.println("month selected");	
+			}else {
+				for(int i=1;i<12;i++) {
+					WebElement next_month=driver.findElement(By.xpath("//body[@class='ng-scope']/div[3]/div[2]/div/a[@title='Next']"));
+					wait.until(ExpectedConditions.elementToBeClickable(next_month));
+					next_month.click();
+					month=driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/span[@class='ui-datepicker-month']")).get(0).getText();
+					if(month.equalsIgnoreCase(departing_month)){
+						break;
+						}
+					}
+				}	
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ui-datepicker-group ui-datepicker-group-first']/table/tbody/tr/td")));
+			List<WebElement> enable_days = driver.findElements(By.xpath("//div[@class='ui-datepicker-group ui-datepicker-group-first']/table/tbody/tr/td"));
+			for(int j=0;j<enable_days.size();j++)
+				{
+				if(enable_days.get(j).getText().equalsIgnoreCase(departing_day))
+					{
+					enable_days.get(j).click();
+					}
+				}
+
+		}
+		
+		
+		
+	}
+	
+	
+	
+	public static void journey1(WebDriver driver) throws IOException {
 		
 		SearchFlight_Page.journey_date(driver).click();
 		
@@ -101,8 +144,9 @@ public class Search_Inputs {
 		String date = ExcelUtils.getStringValue(1, 4);
 		
 		if(date != null && !"".equals(date)) {
-		System.out.println(date);
+		
 		String return_day = date(date);
+		
 		String return_month = month(date);
 		
 		SearchFlight_Page.return_date(driver).click();
@@ -156,11 +200,14 @@ public class Search_Inputs {
 		}
 		
 
+		if(child !=0 && !"".equals(child)) {
 		for(int o=1;o<=child;o++){
 			WebElement child_count=driver.findElement(By.xpath("//button[@data-ng-click='flight.addChild()']"));
 			child_count.click();
 		}
+		}
 		
+		if(infants !=0 && !"".equals(infants)) {
 		if(infants<=adult) {
 		for(int p=1;p<=infants;p++){
 			WebElement infant_count=driver.findElement(By.xpath("//button[@data-ng-click='flight.addInfant()']"));
@@ -169,7 +216,7 @@ public class Search_Inputs {
 		}else {System.out.println("infant number should not be more than adult number");
 		System.exit(0);
 		}
-		
+		}
 		
 		WebElement cancel_traveller=driver.findElement(By.xpath("//div[@class='cancel']/div"));
 		cancel_traveller.click();

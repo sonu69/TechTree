@@ -49,7 +49,10 @@ public class ChangeCountry_Page {
 		else if(name.equalsIgnoreCase("Ghana")) {
 			element = driver.findElement(By.xpath("//ul/li[@title='Ghana']"));
 		}
-		
+		else {
+			System.out.println("Operating Contry not exists");
+			System.exit(0);
+		}
 		return element;
 		
 	}
@@ -77,7 +80,7 @@ public class ChangeCountry_Page {
 		}
 		
 		else if(name.equalsIgnoreCase("USD")) {
-			element = driver.findElement(By.xpath("//li[@title='USD']"));
+			element = driver.findElement(By.xpath("//li[@title='US Dollar']"));
 		}
 		
 		else if(name.equalsIgnoreCase("Singapore")) {
