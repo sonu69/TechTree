@@ -99,6 +99,8 @@ public class Search_Inputs {
 	public static void returndate(WebDriver driver) throws IOException {
 
 		String date = ExcelUtils.getStringValue(1, 4);
+		
+		if(date != null && !"".equals(date)) {
 		System.out.println(date);
 		String return_day = date(date);
 		String return_month = month(date);
@@ -134,6 +136,7 @@ public class Search_Inputs {
 				enable_days.get(j).click();
 				}
 			}
+		}
 	}
 	
 	

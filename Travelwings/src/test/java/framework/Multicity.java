@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -40,9 +41,9 @@ public class Multicity {
 				List <WebElement> destinations = driver.findElements(By.xpath("//input[contains(@id,'destination_')]"));
 				List <WebElement> journeydate = driver.findElements(By.xpath("//input[contains(@id,'journeyDate_')]"));
 				
-				String origin1 = ExcelUtils.getStringValue(49, 1);
-				origins.get(0).sendKeys(origin1);
-				SearchFlight_Page.elementlocator(driver, origin1);
+//				String origin1 = ExcelUtils.getStringValue(49, 1);
+//				origins.get(0).sendKeys(origin1);
+//				SearchFlight_Page.elementlocator(driver, origin1);
 				
 				
 				
@@ -54,19 +55,19 @@ public class Multicity {
 				
 				}
 				
-//				for(int i=0;i<origins.size();i++) {
-//				String origin = ExcelUtils.getStringValue(49+i, 1);
-//				origins.get(i).clear();
-//				origins.get(i).sendKeys(origin);
-//				
-//				List <WebElement> element = driver.findElements(By.xpath("//div[@class='ctyname' and contains(text(),'"+origin+"')]"));
-//				Actions act = new Actions(driver);
-//				act.moveToElement(element.get(0)).build().perform();
-//				element.get(0).click();
-//				
-//				//SearchFlight_Page.elementlocator(driver, origin);
-//				
-//				}				
+				for(int i=0;i<origins.size();i++) {
+				String origin = ExcelUtils.getStringValue(49+i, 1);
+				origins.get(i).clear();
+				origins.get(i).sendKeys(origin);
+				
+				List <WebElement> element = driver.findElements(By.xpath("//div[@class='ctyname' and contains(text(),'"+origin+"')]"));
+				Actions act = new Actions(driver);
+				act.moveToElement(element.get(0)).build().perform();
+				element.get(0).click();
+				
+				//SearchFlight_Page.elementlocator(driver, origin);
+				
+				}				
 
 				
 				
