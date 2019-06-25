@@ -38,7 +38,9 @@ public class Seat_Selection {
 		driver.get("https://test.techtreeit.in/");
 				
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				
+		
+		driver.manage().deleteAllCookies();
+		
 				
 				Search_Inputs.add_origin(driver);
 				
@@ -65,7 +67,17 @@ public class Seat_Selection {
 				YourEmailId_Page.account_login(driver);
 				
 				Thread.sleep(2000);
-				List <WebElement> on_seat=driver.findElements(By.xpath("//button[contains(text(),'Onward Seat')]"));
+				
+				//List <WebElement> on_seat=driver.findElements(By.xpath("//button[contains(text(),'Onward Seat')]"));
+				
+				String on_seat1 = ExcelUtils.getStringValue(1, 12);
+				ExcelUtils.getStringValue(1, 11);
+				
+				if(on_seat1.equalsIgnoreCase("yes") && !on_seat1.equalsIgnoreCase(null)) {
+				
+				
+				
+				List <WebElement> on_seat=driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]"));
 				
 				on_seat.get(0).click();
 				
@@ -90,13 +102,20 @@ public class Seat_Selection {
 				seat_select.get(3).click();
 
 				driver.findElements(By.xpath("//a[text()='Confirm & Continue']")).get(0).click();
-				
+				}
 				//Return seat
 				
 				Thread.sleep(2000);
-				List <WebElement> re_seat=driver.findElements(By.xpath("//button[contains(text(),'Return Seat')]"));
+				//List <WebElement> re_seat=driver.findElements(By.xpath("//button[contains(text(),'Return Seat')]"));
+				String rt_seat = ExcelUtils.getStringValue(1, 12);
 				
-				re_seat.get(0).click();
+				String date = ExcelUtils.getStringValue(1, 4);
+				
+				if(date != null && !"".equals(date) || rt_seat.equalsIgnoreCase("yes")) {
+				
+				List <WebElement> on_seat=driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]"));	
+					
+				on_seat.get(1).click();
 				
 				List<WebElement> Adult_return = driver.findElements(By.xpath("//input[contains(@id,'changeR_0')]"));
 				
@@ -119,7 +138,7 @@ public class Seat_Selection {
 				retun_seat.get(3).click();
 
 				driver.findElements(By.xpath("//a[text()='Confirm & Continue']")).get(1).click();
-				
+				}
 				
 				
 				

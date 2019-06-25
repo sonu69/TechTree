@@ -2,26 +2,22 @@ package framework;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 
-import actions.Addpax_Actions;
-import actions.BookingDetail_Page;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import actions.FlightSelect_Page;
-import actions.Payment_Actions;
 import actions.Search_Inputs;
-import pageObjects.ChangeCountry_Page;
 import pageObjects.Itinerary_Page;
 import pageObjects.SearchFlight_Page;
 import pageObjects.TravellerDetails_Page;
 import pageObjects.YourEmailId_Page;
 
-public class Test {
+public class Meal_Baggage {
 
-	public static void main(String[] args) throws InterruptedException, IOException {
+	public static void main(String[] args) throws IOException, InterruptedException {
+		
+
 		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
 		
 		WebDriver driver = new ChromeDriver();
@@ -30,13 +26,10 @@ public class Test {
 
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		
-		driver.get("https://test.techtreeit.in/");
+		driver.get("https://newuat.travelwings.com");
 				
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				
-				//ChangeCountry_Page.change_country(driver, "India").click();
-				
-				//ChangeCountry_Page.change_currency(driver, "AED").click();
 				
 				Search_Inputs.add_origin(driver);
 				
@@ -62,62 +55,16 @@ public class Test {
 				
 				YourEmailId_Page.account_login(driver);
 				
-				Addpax_Actions.execute(driver);
+				Thread.sleep(2000);
 				
-				Payment_Actions.payment_action(driver);
+				TravellerDetails_Page.onward_seatmap(driver);
+				
+				TravellerDetails_Page.return_seatmap(driver);
+				
+				
+		
+		
 
-				BookingDetail_Page.booking_status(driver);
-				
-				BookingDetail_Page.booking_detail(driver);
-
-
-				
-				
-				
-				
-
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 	}
 
 }
-
-//https://sqa.stackexchange.com/questions/10342/how-to-find-element-using-contains-in-xpath

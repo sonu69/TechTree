@@ -16,6 +16,8 @@ public class TravellerDetails_Page {
 	
 	private static WebElement element;
 	
+	
+	
 	public static void add_pax(WebDriver driver) throws IOException {
 		
 	List<WebElement> adults = driver.findElements(By.xpath("//h6[contains(text(),'Adult')]"));
@@ -221,13 +223,84 @@ public class TravellerDetails_Page {
 		
 	}
 }
+
+	
 	
 	public static WebElement cont_button(WebDriver driver) {
 		element = driver.findElement(By.xpath("//button[text()='CONTINUE' and @class='bttn-yellow']"));
 		return element;
 	}
 
-	public static void add_adult(WebDriver driver) {
+
+	public static WebElement onward_seat(WebDriver driver) {
+		element = driver.findElements(By.xpath("//button[contains(text(),'Onward Seat')]")).get(0);
+		return element;
+	}
+	
+	
+	public static WebElement return_seat(WebDriver driver) {
+		element = driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]")).get(0);
+		return element;
+	}
+	
+	
+	public static void onward_seatmap(WebDriver driver) throws IOException, InterruptedException {
+		
+
+		TravellerDetails_Page.onward_seat(driver).click();
+		
+		int adult = ExcelUtils.getIntValue(1, 5);
+		
+		int child = ExcelUtils.getIntValue(1, 6);
+		
+		int pax = adult+child;
+		
+		List <WebElement> Adult_onward = driver.findElements(By.xpath("//input[contains(@id,'change_')]"));
+		
+		List <WebElement> seat_select = driver.findElements(By.xpath("//li[contains(@id,'onward_') and @class='available']"));
+		
+		for(int i=0;i<pax;i++) {
+			Thread.sleep(1000);
+			Adult_onward.get(i).click();
+			seat_select.get(i).click();
+		}	
+		
+		driver.findElements(By.xpath("//a[text()='Confirm & Continue']")).get(0).click();
+}
+	
+	
+	
+	public static void return_seatmap(WebDriver driver) throws IOException, InterruptedException {
+				
+		String date = ExcelUtils.getStringValue(1, 4);
+		if(date != null && !"".equals(date)) {
+		
+		TravellerDetails_Page.return_seat(driver).click();
+		
+		List<WebElement> Adult_return = driver.findElements(By.xpath("//input[contains(@id,'changeR_0')]"));
+		
+		List <WebElement> retun_seat = driver.findElements(By.xpath("//li[contains(@id,'return_') and @class='available']"));
+		
+		int adult = ExcelUtils.getIntValue(1, 5);
+		int child = ExcelUtils.getIntValue(1, 6);
+		
+		int pax = adult+child;
+		
+		for(int i=0;i<pax;i++) {
+			Thread.sleep(1000);
+			Adult_return.get(i).click();
+			retun_seat.get(i).click();
+		
+		}
+	}
+		
+		driver.findElements(By.xpath("//a[text()='Confirm & Continue']")).get(1).click();	
+		
+}
+
+
+
+public static void add_adult(WebDriver driver) {
 		List<WebElement> titles= driver.findElements(By.xpath("//select[@name='Title']"));
 		List<WebElement> firstname = driver.findElements(By.xpath("//div[text()='First Name']/../div[2]/input"));
 		List<WebElement> lastname = driver.findElements(By.xpath("//div[text()='Last Name']/../div[2]/input"));
@@ -321,7 +394,7 @@ public class TravellerDetails_Page {
 			Select national1 = new Select(driver.findElements(By.xpath("//select[@id='countryId']")).get(1));
 			national1.selectByVisibleText("India");		
 	}
-	
+
 	public static void add_child(WebDriver driver) {
 		List<WebElement> titles= driver.findElements(By.xpath("//select[@name='Title']"));
 		
