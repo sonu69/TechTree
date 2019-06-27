@@ -27,7 +27,7 @@ public static WebDriver openBrowser() {
 	driver = new ChromeDriver(options);
 	new DesiredCapabilities();
 	DesiredCapabilities cap=DesiredCapabilities.chrome();
-		
+
 	} else if(browsername.equalsIgnoreCase("firefox")) {
 		System.setProperty("webdriver.gecko.driver", ".//Drivers//geckodriver");
 
@@ -42,5 +42,27 @@ public static WebDriver openBrowser() {
 	return driver;
 }
 	
+
+//public static WebDriver openBrowser(int testcaserow) throws FileNotFoundException, IOException{
+//	
+//	String browsername = ExcelUtils.getData(testcaserow, Constant.testcase_colnum);
+//	
+//	if(browsername.equalsIgnoreCase("mozilla")) {
+//		System.setProperty("webdriver.gecko.driver", "C:\\Selenium\\geckodriver-v0.21.0-win64\\geckodriver.exe");
+//		driver = new FirefoxDriver();
+//		driver.manage().window().maximize();
+//		driver.get(Constant.URL);
+//	}else if(browsername.equalsIgnoreCase("chrome")) {
+//		System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver_win32\\chromedriver.exe");
+//		driver = new ChromeDriver();
+//		driver.manage().window().maximize();
+//		driver.get(Constant.URL);
+//	}
+//	return driver;
+//}
+
+
+
+
 
 }

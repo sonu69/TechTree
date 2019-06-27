@@ -10,23 +10,19 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelUtils {
 	
 static XSSFSheet sh;
-	
-
 
 	public static void excel()  {
 		try {
 			File fl = new File(".//Data//Test_Data.xlsx");
 			FileInputStream fis = new FileInputStream(fl);
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
-			sh = wb.getSheetAt(0);
-		} catch (FileNotFoundException e) {
-			 
-			e.printStackTrace();
-		} catch (IOException e) {
-			 
-			e.printStackTrace();
-		}
+			sh = wb.getSheetAt(0);}
 		
+		
+		
+		catch (FileNotFoundException e) {e.printStackTrace();}
+		
+		catch (IOException e) {e.printStackTrace();}
 		
 	}
 	
@@ -54,15 +50,34 @@ static XSSFSheet sh;
 	}
 	
 	
-	public static void getIntValue1(int row, int cell) throws IOException {
+	public static int getRowContains(String testcasename) throws FileNotFoundException, IOException {
+		
 		File fl = new File(".//Data//Test_Data.xlsx");
 		FileInputStream fis = new FileInputStream(fl);
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 		sh = wb.getSheetAt(0);
-		int data = (int) sh.getRow(row).getCell(cell).getNumericCellValue();
-		System.out.println(data);
+		
+		int j;
+		int lastrow = sh.getLastRowNum();
 
+		String [] testcase = new String[lastrow-1];
+
+		for(j=1;j<lastrow;j++){
+		String testcases = ExcelUtils.getStringValue(j, 0);
+			testcase[j-1] = testcases;
+		}
+		
+		int i;
+		int length = testcase.length;
+			
+		for(i=0;i<length;i++){
+			if(testcase[i].equalsIgnoreCase(testcasename)) {
+				break;
+				}
+			}
+		  return i+1;	
 	}
+
 	
 	
 
