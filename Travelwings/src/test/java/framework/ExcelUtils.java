@@ -2,6 +2,7 @@ package framework;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -12,20 +13,35 @@ static XSSFSheet sh;
 	
 
 
-	public static void excel() throws IOException {
-		File fl = new File(".//Data//Test_Data.xlsx");
-		FileInputStream fis = new FileInputStream(fl);
-		XSSFWorkbook wb = new XSSFWorkbook(fis);
-		sh = wb.getSheetAt(0);
+	public static void excel()  {
+		try {
+			File fl = new File(".//Data//Test_Data.xlsx");
+			FileInputStream fis = new FileInputStream(fl);
+			XSSFWorkbook wb = new XSSFWorkbook(fis);
+			sh = wb.getSheetAt(0);
+		} catch (FileNotFoundException e) {
+			 
+			e.printStackTrace();
+		} catch (IOException e) {
+			 
+			e.printStackTrace();
+		}
 		
 		
 	}
 	
 	
 	
-	public static String getStringValue(int row, int cell) throws IOException {
+	public static String getStringValue(int row, int cell) {
 		excel();
-		return sh.getRow(row).getCell(cell).getStringCellValue();
+		//return sh.getRow(row).getCell(cell).getStringCellValue() ;
+		try {
+			return sh.getRow(row).getCell(cell).getStringCellValue() ;
+		} 
+		catch (Exception e) {
+			return "";
+		}
+		
 	}
 	
 	

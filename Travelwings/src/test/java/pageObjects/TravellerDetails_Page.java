@@ -224,13 +224,6 @@ public class TravellerDetails_Page {
 	}
 }
 
-	
-	
-	public static WebElement cont_button(WebDriver driver) {
-		element = driver.findElement(By.xpath("//button[text()='CONTINUE' and @class='bttn-yellow']"));
-		return element;
-	}
-
 
 	public static WebElement onward_seat(WebDriver driver) {
 		element = driver.findElements(By.xpath("//button[contains(text(),'Onward Seat')]")).get(0);
@@ -245,8 +238,11 @@ public class TravellerDetails_Page {
 	
 	
 	public static void onward_seatmap(WebDriver driver) throws IOException, InterruptedException {
+	
+		String onwrd_seat = ExcelUtils.getStringValue(1, 11);
 		
-
+		if(onwrd_seat.equalsIgnoreCase("YES") ) {
+		
 		TravellerDetails_Page.onward_seat(driver).click();
 		
 		int adult = ExcelUtils.getIntValue(1, 5);
@@ -267,13 +263,15 @@ public class TravellerDetails_Page {
 		
 		driver.findElements(By.xpath("//a[text()='Confirm & Continue']")).get(0).click();
 }
+		}
 	
 	
 	
 	public static void return_seatmap(WebDriver driver) throws IOException, InterruptedException {
-				
-		String date = ExcelUtils.getStringValue(1, 4);
-		if(date != null && !"".equals(date)) {
+
+		String rtrn_seat = ExcelUtils.getStringValue(1, 12);
+		
+		if(rtrn_seat.equalsIgnoreCase("YES") ) {
 		
 		TravellerDetails_Page.return_seat(driver).click();
 		
@@ -292,15 +290,25 @@ public class TravellerDetails_Page {
 			retun_seat.get(i).click();
 		
 		}
-	}
+
 		
 		driver.findElements(By.xpath("//a[text()='Confirm & Continue']")).get(1).click();	
-		
+		}		
 }
 
 
+	
+	
 
-public static void add_adult(WebDriver driver) {
+	public static WebElement cont_button(WebDriver driver) {
+		element = driver.findElement(By.xpath("//button[text()='CONTINUE' and @class='bttn-yellow']"));
+		return element;
+	}
+	
+	
+
+
+	public static void add_adult(WebDriver driver) {
 		List<WebElement> titles= driver.findElements(By.xpath("//select[@name='Title']"));
 		List<WebElement> firstname = driver.findElements(By.xpath("//div[text()='First Name']/../div[2]/input"));
 		List<WebElement> lastname = driver.findElements(By.xpath("//div[text()='Last Name']/../div[2]/input"));

@@ -70,12 +70,9 @@ public class Seat_Selection {
 				
 				//List <WebElement> on_seat=driver.findElements(By.xpath("//button[contains(text(),'Onward Seat')]"));
 				
-				String on_seat1 = ExcelUtils.getStringValue(1, 12);
-				ExcelUtils.getStringValue(1, 11);
+				String onwrd_seat = ExcelUtils.getStringValue(1, 11);
 				
-				if(on_seat1.equalsIgnoreCase("yes") && !on_seat1.equalsIgnoreCase(null)) {
-				
-				
+				if(onwrd_seat.equalsIgnoreCase("YES") ) {
 				
 				List <WebElement> on_seat=driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]"));
 				
@@ -100,21 +97,19 @@ public class Seat_Selection {
 				Thread.sleep(2000);
 				Adult_onward.get(3).click();
 				seat_select.get(3).click();
-
-				driver.findElements(By.xpath("//a[text()='Confirm & Continue']")).get(0).click();
-				}
-				//Return seat
 				
 				Thread.sleep(2000);
-				//List <WebElement> re_seat=driver.findElements(By.xpath("//button[contains(text(),'Return Seat')]"));
+				
+				driver.findElements(By.xpath("//div[@class='text-right']/a[text()='Confirm & Continue']")).get(0).click();
+				
+				Thread.sleep(2000);
+				
 				String rt_seat = ExcelUtils.getStringValue(1, 12);
 				
 				String date = ExcelUtils.getStringValue(1, 4);
 				
-				if(date != null && !"".equals(date) || rt_seat.equalsIgnoreCase("yes")) {
-				
-				List <WebElement> on_seat=driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]"));	
-					
+				if(rt_seat.equalsIgnoreCase("YES") &&  !"".equals(date)) {
+									
 				on_seat.get(1).click();
 				
 				List<WebElement> Adult_return = driver.findElements(By.xpath("//input[contains(@id,'changeR_0')]"));
@@ -136,8 +131,9 @@ public class Seat_Selection {
 				Thread.sleep(2000);
 				Adult_return.get(3).click();
 				retun_seat.get(3).click();
-
-				driver.findElements(By.xpath("//a[text()='Confirm & Continue']")).get(1).click();
+				
+				Thread.sleep(2000);
+				driver.findElements(By.xpath("//div[@class='text-right']/a[text()='Confirm & Continue']")).get(1).click();
 				}
 				
 				
@@ -148,6 +144,6 @@ public class Seat_Selection {
 
 	}
 
-}
+}}
 
 //http://www.qualitylearning.in/?p=1823

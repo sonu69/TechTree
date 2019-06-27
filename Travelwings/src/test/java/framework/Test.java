@@ -64,58 +64,14 @@ public class Test {
 				
 				Addpax_Actions.execute(driver);
 				
+				Addpax_Actions.seat_execute(driver);
+				
 				Payment_Actions.payment_action(driver);
 
 				BookingDetail_Page.booking_status(driver);
 				
 				BookingDetail_Page.booking_detail(driver);
 
-
-				
-				
-				
-				
-
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 	}
 
 }
