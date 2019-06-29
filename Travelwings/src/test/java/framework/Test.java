@@ -38,7 +38,6 @@ public class Test {
 				
 				Search_Inputs.flight_name(driver,TestCase_Row);
 				
-				
 				Thread.sleep(2000);
 				
 				SearchFlight_Page.search_flight(driver).click();

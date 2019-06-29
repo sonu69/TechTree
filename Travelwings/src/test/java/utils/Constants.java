@@ -4,7 +4,7 @@ public class Constants {
 	
 	public static final String url = "https://test.techtreeit.in/";
 	
-	public static final String testcase_name ="TestCase_Amd1";
+	public static final String testcase_name ="TestCase_LCC3";
 	
 	public static final int testcasename_col=0;
 	
