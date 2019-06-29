@@ -76,7 +76,13 @@ public static String captureScreenshot(WebDriver driver) {
 		
 	}
 	
-	
+	public static void Webelement(WebDriver driver, WebElement element) {
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;	
+		js.executeScript("arguments[0].click();",element);
+		
+	}
+
 	
 	
 	public static String getCurrentDateTime() {

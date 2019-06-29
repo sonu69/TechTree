@@ -1,21 +1,20 @@
 package framework;
 
+import org.openqa.selenium.WebDriver;
 
 public class Test1 {
 
+	static WebDriver driver;
+	
+	private static int TestCase_Row;
 	
 	public static void main (String[] args) throws Exception {
-		String return_date= ExcelUtils.getStringValue(62, 2);
 		
-		String onward_Seat = ExcelUtils.getStringValue(61, 3);
+		System.out.println(ExcelUtils.getStringValue(1, 20));
+	System.out.println(ExcelUtils.getStringValue(1, 21));
 		
-		String return_Seat = ExcelUtils.getStringValue(61, 4);
 		
-		if((return_date != null && !"".equals(return_date)) && (onward_Seat.equalsIgnoreCase("yes") || (onward_Seat != null && !"".equals(onward_Seat))))
-		{
-			System.out.println("sonu");
-		}
 		
-		System.out.println("shameek");
+		
 	}
 }

@@ -1,5 +1,7 @@
 package pageObjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,10 +12,10 @@ public class SearchFlight_Page {
 	private static WebElement element;
 	
 	public static void elementlocator(WebDriver driver,String airportname) {
-		element = driver.findElement(By.xpath("//div[@class='ctyname' and contains(text(),'"+airportname+"')]"));
+		List <WebElement> element = driver.findElements(By.xpath("//div[@class='ctyname' and contains(text(),'"+airportname+"')]"));
 		Actions act = new Actions(driver);
-		act.moveToElement(element).build().perform();
-		element.click();
+		act.moveToElement(element.get(0)).build().perform();
+		element.get(0).click();
 	}
 	
 	

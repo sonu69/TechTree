@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import framework.ExcelUtils;
+import framework.Helper;
+import utils.Constants;
 
 public class YourEmailId_Page {
 	
@@ -17,11 +19,11 @@ public class YourEmailId_Page {
 		return element;
 	}
 	
-	public static void account_login(WebDriver driver) throws IOException, InterruptedException {
+	public static void account_login(WebDriver driver,int testrow) throws IOException, InterruptedException {
 		
-		String username = ExcelUtils.getStringValue(1, 9);
+		String username = ExcelUtils.getStringValue(testrow, Constants.email_col);
 		
-		String password = ExcelUtils.getStringValue(1, 10);
+		String password = ExcelUtils.getStringValue(testrow, Constants.password_col);
 		Thread.sleep(5000);
 		
 		//driver.findElement(By.xpath("//input[@data-ng-model='booking.availableAccount.checked']")).click();
@@ -42,7 +44,8 @@ public class YourEmailId_Page {
 		}catch (Exception e) {}
 		
 		try {
-		driver.findElement(By.xpath("//button[@id='submit-form']")).click();
+		WebElement element = driver.findElement(By.xpath("//button[@id='submit-form']"));
+		Helper.Webelement(driver, element);
 		}catch (Exception e) {}
 	}
 	

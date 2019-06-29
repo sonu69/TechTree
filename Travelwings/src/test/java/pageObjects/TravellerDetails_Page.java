@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -11,12 +12,11 @@ import org.openqa.selenium.support.ui.Select;
 
 import actions.Search_Inputs;
 import framework.ExcelUtils;
+import utils.Constants;
 
 public class TravellerDetails_Page {
 	
 	private static WebElement element;
-	
-	
 	
 	public static void add_pax(WebDriver driver) throws IOException {
 		
@@ -51,14 +51,14 @@ public class TravellerDetails_Page {
 	for(int i=0;i<adult_size;i++) {
 		
 		Select sl = new Select(titles.get(i));
-		String title = ExcelUtils.getStringValue(17+i, 0);
+		String title = ExcelUtils.getStringValue(69+i, 0);
 		sl.selectByVisibleText(title);
-		String first_name = ExcelUtils.getStringValue(17+i, 1);
+		String first_name = ExcelUtils.getStringValue(69+i, 1);
 		firstname.get(i).sendKeys(first_name);
-		String last_name = ExcelUtils.getStringValue(17+i, 2);
+		String last_name = ExcelUtils.getStringValue(69+i, 2);
 		lastname.get(i).sendKeys(last_name);
 
-		String date = ExcelUtils.getStringValue(17+i, 3);
+		String date = ExcelUtils.getStringValue(69+i, 3);
 		String d_day=Search_Inputs.date(date);
 		String d_month = Search_Inputs.month(date);
 		String d_year = Search_Inputs.year(date);
@@ -73,14 +73,14 @@ public class TravellerDetails_Page {
 
 		driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='"+d_day+"']")).click();
 				
-		String phone_number = ExcelUtils.getStringValue(17+i, 5);
+		String phone_number = ExcelUtils.getStringValue(69+i, 5);
 		phone.get(i).sendKeys(phone_number);
 
-		String passport_exp = ExcelUtils.getStringValue(17+i, 6);
+		String passport_exp = ExcelUtils.getStringValue(69+i, 6);
 		passport.get(i).sendKeys(passport_exp);
 		exp_date.get(i).click();
 		
-		String expiry_date = ExcelUtils.getStringValue(17+i, 7);
+		String expiry_date = ExcelUtils.getStringValue(69+i, 7);
 		String exp_day=Search_Inputs.date(expiry_date);
 		String exp_month = Search_Inputs.month(expiry_date);
 		String exp_year = Search_Inputs.year(expiry_date);
@@ -96,7 +96,7 @@ public class TravellerDetails_Page {
 
 		Select nation = new Select(nationality.get(i));
 
-		String country = ExcelUtils.getStringValue(17+i, 8);
+		String country = ExcelUtils.getStringValue(69+i, 8);
 
 		nation.selectByVisibleText(country);
 		
@@ -106,18 +106,18 @@ public class TravellerDetails_Page {
 	for(int j=0;j<child_size;j++) {
 		
 		Select sl = new Select(titles.get(j+m));
-		String title = ExcelUtils.getStringValue(26+j, 0);
+		String title = ExcelUtils.getStringValue(78+j, 0);
 		sl.selectByVisibleText(title);
 		
-		String first_name = ExcelUtils.getStringValue(26+j, 1);
+		String first_name = ExcelUtils.getStringValue(78+j, 1);
 		firstname.get(j+m).sendKeys(first_name);
 		
-		String last_name = ExcelUtils.getStringValue(26+j, 2);
+		String last_name = ExcelUtils.getStringValue(78+j, 2);
 		lastname.get(j+m).sendKeys(last_name);
 		
 		dob.get(j+m).click();
 		
-		String date = ExcelUtils.getStringValue(26+j, 3);
+		String date = ExcelUtils.getStringValue(78+j, 3);
 		String d_day=Search_Inputs.date(date);
 		String d_month = Search_Inputs.month(date);
 		String d_year = Search_Inputs.year(date);
@@ -130,15 +130,15 @@ public class TravellerDetails_Page {
 		d_month0.selectByVisibleText(d_month);
 		driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='"+d_day+"']")).click();
 
-		String phone_number = ExcelUtils.getStringValue(26+j, 5);
+		String phone_number = ExcelUtils.getStringValue(78+j, 5);
 		phone.get(j+m).sendKeys(phone_number);
 
-		String passport_exp = ExcelUtils.getStringValue(26+j, 6);
+		String passport_exp = ExcelUtils.getStringValue(78+j, 6);
 		passport.get(j+m).sendKeys(passport_exp);
 
 		exp_date.get(j+m).click();
 
-		String expiry_date = ExcelUtils.getStringValue(26+j, 7);
+		String expiry_date = ExcelUtils.getStringValue(78+j, 7);
 		String exp_day=Search_Inputs.date(expiry_date);
 		String exp_month = Search_Inputs.month(expiry_date);
 		String exp_year = Search_Inputs.year(expiry_date);
@@ -155,7 +155,7 @@ public class TravellerDetails_Page {
 
 		Select nation = new Select(nationality.get(j+m));
 
-		String country = ExcelUtils.getStringValue(26+j, 8);
+		String country = ExcelUtils.getStringValue(78+j, 8);
 
 		nation.selectByVisibleText(country);
 		
@@ -166,17 +166,17 @@ public class TravellerDetails_Page {
 	for(int k=0;k<infant_size;k++) {
 		
 		Select sl = new Select(titles.get(k+l));
-		String title = ExcelUtils.getStringValue(38+k, 0);
+		String title = ExcelUtils.getStringValue(90+k, 0);
 		sl.selectByVisibleText(title);
 		
-		String first_name = ExcelUtils.getStringValue(38+k, 1);
+		String first_name = ExcelUtils.getStringValue(90+k, 1);
 		firstname.get(k+l).sendKeys(first_name);
-		String last_name = ExcelUtils.getStringValue(38+k, 2);
+		String last_name = ExcelUtils.getStringValue(90+k, 2);
 		lastname.get(k+l).sendKeys(last_name);
 		
 		dob.get(k+l).click();
 		
-		String date = ExcelUtils.getStringValue(38+k, 3);
+		String date = ExcelUtils.getStringValue(90+k, 3);
 		String d_day=Search_Inputs.date(date);
 		String d_month = Search_Inputs.month(date);
 		String d_year = Search_Inputs.year(date);
@@ -190,15 +190,15 @@ public class TravellerDetails_Page {
 		d_month0.selectByVisibleText(d_month);
 		driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='"+d_day+"']")).click();
 		
-		String phone_number = ExcelUtils.getStringValue(38+k, 5);
+		String phone_number = ExcelUtils.getStringValue(90+k, 5);
 		phone.get(k+l).sendKeys(phone_number);
 
-		String passport_exp = ExcelUtils.getStringValue(38+k, 6);
+		String passport_exp = ExcelUtils.getStringValue(90+k, 6);
 		passport.get(k+l).sendKeys(passport_exp);
 
 		exp_date.get(k+l).click();
 
-		String expiry_date = ExcelUtils.getStringValue(38+k, 7);
+		String expiry_date = ExcelUtils.getStringValue(90+k, 7);
 		String exp_day=Search_Inputs.date(expiry_date);
 		String exp_month = Search_Inputs.month(expiry_date);
 		String exp_year = Search_Inputs.year(expiry_date);
@@ -217,7 +217,7 @@ public class TravellerDetails_Page {
 
 		Select nation = new Select(nationality.get(k+l));
 
-		String country = ExcelUtils.getStringValue(38+k, 8);
+		String country = ExcelUtils.getStringValue(90+k, 8);
 
 		nation.selectByVisibleText(country);
 		
@@ -226,28 +226,39 @@ public class TravellerDetails_Page {
 
 
 	public static WebElement onward_seat(WebDriver driver) {
-		element = driver.findElements(By.xpath("//button[contains(text(),'Onward Seat')]")).get(0);
+		
+		//element = driver.findElements(By.xpath("//button[contains(text(),'Onward Seat')]")).get(0);
+		
+		element = driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]")).get(0);
+		
 		return element;
 	}
 	
 	
 	public static WebElement return_seat(WebDriver driver) {
-		element = driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]")).get(0);
+		//element = driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]")).get(0);
+		
+		element = driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]")).get(1);
+		
 		return element;
 	}
 	
 	
-	public static void onward_seatmap(WebDriver driver) throws IOException, InterruptedException {
+	public static void onward_seatmap(WebDriver driver,int testrow) throws IOException, InterruptedException {
 	
-		String onwrd_seat = ExcelUtils.getStringValue(1, 11);
+		String onwrd_seat = ExcelUtils.getStringValue(testrow, 11);
 		
-		if(onwrd_seat.equalsIgnoreCase("YES") ) {
+		if(onwrd_seat.equalsIgnoreCase("YES")) {
 		
-		TravellerDetails_Page.onward_seat(driver).click();
+		//TravellerDetails_Page.onward_seat(driver).click();
 		
-		int adult = ExcelUtils.getIntValue(1, 5);
+		JavascriptExecutor js = (JavascriptExecutor) driver;		
+		js.executeScript("arguments[0].click();",TravellerDetails_Page.onward_seat(driver));
 		
-		int child = ExcelUtils.getIntValue(1, 6);
+		
+		int adult = ExcelUtils.getIntValue(testrow, Constants.adult_col);
+		
+		int child = ExcelUtils.getIntValue(testrow, Constants.child_col);
 		
 		int pax = adult+child;
 		
@@ -266,21 +277,26 @@ public class TravellerDetails_Page {
 		}
 	
 	
-	
-	public static void return_seatmap(WebDriver driver) throws IOException, InterruptedException {
+	public static void return_seatmap(WebDriver driver,int testrow) throws IOException, InterruptedException {
 
-		String rtrn_seat = ExcelUtils.getStringValue(1, 12);
+		String rtrn_seat = ExcelUtils.getStringValue(testrow, Constants.return_seat_col);
 		
-		if(rtrn_seat.equalsIgnoreCase("YES") ) {
+		String date = ExcelUtils.getStringValue(testrow, Constants.returndate_col);
 		
-		TravellerDetails_Page.return_seat(driver).click();
+		if(rtrn_seat.equalsIgnoreCase("YES") && !"".equals(date)) {
 		
+		//TravellerDetails_Page.return_seat(driver).click();
+		
+			JavascriptExecutor js = (JavascriptExecutor) driver;		
+			js.executeScript("arguments[0].click();",TravellerDetails_Page.return_seat(driver));
+			
+			
 		List<WebElement> Adult_return = driver.findElements(By.xpath("//input[contains(@id,'changeR_0')]"));
 		
 		List <WebElement> retun_seat = driver.findElements(By.xpath("//li[contains(@id,'return_') and @class='available']"));
 		
-		int adult = ExcelUtils.getIntValue(1, 5);
-		int child = ExcelUtils.getIntValue(1, 6);
+		int adult = ExcelUtils.getIntValue(testrow, Constants.adult_col);
+		int child = ExcelUtils.getIntValue(testrow, Constants.child_col);
 		
 		int pax = adult+child;
 		
@@ -290,24 +306,95 @@ public class TravellerDetails_Page {
 			retun_seat.get(i).click();
 		
 		}
-
 		
 		driver.findElements(By.xpath("//a[text()='Confirm & Continue']")).get(1).click();	
 		}		
 }
 
+	
+	public static void onward_baggage(WebDriver driver,int testrow) {
+		
+		String owrd_bag = ExcelUtils.getStringValue(testrow, Constants.onward_baggage_col);
+		
+		if(owrd_bag.equalsIgnoreCase("YES") ) {
+		
+			List <WebElement> onward_bag = driver.findElements(By.xpath("//select[contains(@id,'bagg_')]"));
+		
+		for(int i=0;i<onward_bag.size();i++) {
+		
+		Select sl = new Select(onward_bag.get(i));
+		sl.selectByIndex(0);
+		
+		}
+	}
+}
+	
+	public static void return_baggage(WebDriver driver,int testrow) {
+		
+		String rtn_bag = ExcelUtils.getStringValue(testrow, Constants.return_baggage_col);
 
+		String date = ExcelUtils.getStringValue(testrow, Constants.returndate_col);
+		
+		if(rtn_bag.equalsIgnoreCase("YES") && !"".equals(date)) {
+			
+		List <WebElement> return_bag = driver.findElements(By.xpath("//select[contains(@id,'baggr_')]"));	
+			
+		for(int i=0;i<return_bag.size();i++) {
+		Select sl = new Select(return_bag.get(i));
+		sl.selectByIndex(1);	
+		}
+		}
+	}
 	
 	
-
+	public static void onward_meal(WebDriver driver,int testrow) {
+		
+		String owrd_meal = ExcelUtils.getStringValue(testrow, Constants.onward_meal_col);
+		
+		if(owrd_meal.equalsIgnoreCase("YES") ) {
+			
+			List <WebElement> onward_meal = driver.findElements(By.xpath("//select[contains(@name,'onwardSpecialServiceMeal')]"));
+			
+			for(int i=0;i<onward_meal.size();i++) {
+			Select sl = new Select(onward_meal.get(0));
+			sl.selectByIndex(i);
+				
+			}
+			
+		}
+	}
+	
+	
+	public static void return_meal(WebDriver driver,int testrow) {
+		
+		String rtn_meal = ExcelUtils.getStringValue(testrow, Constants.return_meal_col);
+		
+		String date = ExcelUtils.getStringValue(testrow, Constants.returndate_col);
+		
+		if(rtn_meal.equalsIgnoreCase("YES") && !"".equals(date)) {
+			
+			List <WebElement> return_meal = driver.findElements(By.xpath("//select[contains(@name,'returnSpecialServiceMeal')]"));
+			
+			for(int i=0;i<return_meal.size();i++) {
+			Select sl = new Select(return_meal.get(i));
+			sl.selectByIndex(1);
+			}
+		}
+	}
+	
+	
 	public static WebElement cont_button(WebDriver driver) {
 		element = driver.findElement(By.xpath("//button[text()='CONTINUE' and @class='bttn-yellow']"));
 		return element;
 	}
-	
-	
 
 
+	
+	
+	
+	
+	
+	
 	public static void add_adult(WebDriver driver) {
 		List<WebElement> titles= driver.findElements(By.xpath("//select[@name='Title']"));
 		List<WebElement> firstname = driver.findElements(By.xpath("//div[text()='First Name']/../div[2]/input"));

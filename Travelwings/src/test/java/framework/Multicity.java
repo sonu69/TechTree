@@ -26,7 +26,7 @@ import pageObjects.YourEmailId_Page;
 public class Multicity {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		 
+		int TestCase_Row=ExcelUtils.getRowContains("TestCase_LCC1");	
 		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
 		WebDriver driver = new ChromeDriver();
 				driver.manage().window().maximize();
@@ -56,9 +56,9 @@ public class Multicity {
 				
 				}				
 
-				Search_Inputs.journeydate(driver);
+				Search_Inputs.journeydate(driver,TestCase_Row);
 				
-				Search_Inputs.pax_list(driver);
+				Search_Inputs.pax_list(driver,TestCase_Row);
 				
 				Thread.sleep(2000);
 				
@@ -70,11 +70,11 @@ public class Multicity {
 				
 				Itinerary_Page.continue_itinerary(driver).click();
 				
-				YourEmailId_Page.account_login(driver);
+				YourEmailId_Page.account_login(driver,TestCase_Row);
 				
 				Addpax_Actions.execute(driver);
 				
-				Payment_Actions.payment_action(driver);
+				Payment_Actions.payment_action(driver,TestCase_Row);
 
 				BookingDetail_Page.booking_status(driver);
 				

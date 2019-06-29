@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,6 +18,7 @@ import actions.Search_Inputs;
 import pageObjects.ChangeCountry_Page;
 import pageObjects.Itinerary_Page;
 import pageObjects.SearchFlight_Page;
+import pageObjects.TravellerDetails_Page;
 import pageObjects.YourEmailId_Page;
 
 public class Seat_Selection {
@@ -35,24 +37,24 @@ public class Seat_Selection {
 
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		
-		driver.get("https://test.techtreeit.in/");
+		driver.get("https://test.techtreeit.in");
 				
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		driver.manage().deleteAllCookies();
-		
+		int TestCase_Row=ExcelUtils.getRowContains("TestCase_LCC1");
 				
-				Search_Inputs.add_origin(driver);
+				Search_Inputs.add_origin(driver,TestCase_Row);
 				
-				Search_Inputs.add_destination(driver);
+				Search_Inputs.add_destination(driver,TestCase_Row);
 
-				Search_Inputs.journeydate(driver);
+				Search_Inputs.journeydate(driver,TestCase_Row);
 				
-				Search_Inputs.returndate(driver);
+				Search_Inputs.returndate(driver,TestCase_Row);
 				
-				Search_Inputs.pax_list(driver);
+				Search_Inputs.pax_list(driver,TestCase_Row);
 				
-				Search_Inputs.flight_name(driver);
+				Search_Inputs.flight_name(driver,TestCase_Row);
 				
 				Thread.sleep(2000);
 				
@@ -64,7 +66,11 @@ public class Seat_Selection {
 				
 				Itinerary_Page.continue_itinerary(driver).click();
 				
-				YourEmailId_Page.account_login(driver);
+				YourEmailId_Page.account_login(driver,TestCase_Row);
+				
+				Thread.sleep(2000);
+				
+				Addpax_Actions.execute(driver);
 				
 				Thread.sleep(2000);
 				
@@ -76,7 +82,12 @@ public class Seat_Selection {
 				
 				List <WebElement> on_seat=driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]"));
 				
-				on_seat.get(0).click();
+				//on_seat.get(0).click();
+				
+				WebElement element = driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]")).get(0);
+				JavascriptExecutor js = (JavascriptExecutor) driver;		
+				js.executeScript("arguments[0].click();",element);
+				
 				
 				List<WebElement> Adult_onward = driver.findElements(By.xpath("//input[contains(@id,'change_')]"));
 				
@@ -102,6 +113,9 @@ public class Seat_Selection {
 				
 				driver.findElements(By.xpath("//div[@class='text-right']/a[text()='Confirm & Continue']")).get(0).click();
 				
+				}
+				
+				
 				Thread.sleep(2000);
 				
 				String rt_seat = ExcelUtils.getStringValue(1, 12);
@@ -109,8 +123,15 @@ public class Seat_Selection {
 				String date = ExcelUtils.getStringValue(1, 4);
 				
 				if(rt_seat.equalsIgnoreCase("YES") &&  !"".equals(date)) {
-									
-				on_seat.get(1).click();
+					
+				List <WebElement> on_seat=driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]"));
+					
+				WebElement element = driver.findElements(By.xpath("//button[contains(@data-ng-click,'booking.openSelectModal')]")).get(1);
+				JavascriptExecutor js = (JavascriptExecutor) driver;		
+				js.executeScript("arguments[0].click();",element);
+				
+				
+				//on_seat.get(1).click();
 				
 				List<WebElement> Adult_return = driver.findElements(By.xpath("//input[contains(@id,'changeR_0')]"));
 				
@@ -136,14 +157,9 @@ public class Seat_Selection {
 				driver.findElements(By.xpath("//div[@class='text-right']/a[text()='Confirm & Continue']")).get(1).click();
 				}
 				
-				
-				
-				
-				
-				
+				TravellerDetails_Page.cont_button(driver).click();
 
 	}
-
-}}
+}
 
 //http://www.qualitylearning.in/?p=1823

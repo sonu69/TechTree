@@ -29,19 +29,19 @@ public class Meal_Baggage {
 		driver.get("https://newuat.travelwings.com");
 				
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		int TestCase_Row=ExcelUtils.getRowContains("TestCase_LCC1");		
 				
+				Search_Inputs.add_origin(driver,TestCase_Row);
 				
-				Search_Inputs.add_origin(driver);
-				
-				Search_Inputs.add_destination(driver);
+				Search_Inputs.add_destination(driver,TestCase_Row);
 
-				Search_Inputs.journeydate(driver);
+				Search_Inputs.journeydate(driver,TestCase_Row);
 				
-				Search_Inputs.returndate(driver);
+				Search_Inputs.returndate(driver,TestCase_Row);
 				
-				Search_Inputs.pax_list(driver);
+				Search_Inputs.pax_list(driver,TestCase_Row);
 				
-				Search_Inputs.flight_name(driver);
+				Search_Inputs.flight_name(driver,TestCase_Row);
 				
 				Thread.sleep(2000);
 				
@@ -53,13 +53,15 @@ public class Meal_Baggage {
 				
 				Itinerary_Page.continue_itinerary(driver).click();
 				
-				YourEmailId_Page.account_login(driver);
+				YourEmailId_Page.account_login(driver,TestCase_Row);
 				
 				Thread.sleep(2000);
 				
-				TravellerDetails_Page.onward_seatmap(driver);
+				TravellerDetails_Page.onward_seatmap(driver,TestCase_Row);
 				
-				TravellerDetails_Page.return_seatmap(driver);
+				TravellerDetails_Page.return_seatmap(driver,TestCase_Row);
+				
+				
 				
 				
 		

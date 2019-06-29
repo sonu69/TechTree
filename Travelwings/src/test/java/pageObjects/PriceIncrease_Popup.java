@@ -19,6 +19,12 @@ public class PriceIncrease_Popup {
 		return element;
 	}
 	
-	
+	public static WebElement noflight_available(WebDriver driver) {
+		element = driver.findElement(By.xpath("//button[contains(text(),'OK')]"));
+		return element;
+	}
 
+	
+	
+	
 }

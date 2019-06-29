@@ -6,9 +6,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import framework.ExcelUtils;
+
 public class FlightSelect_Page {
 	
-	public static void select_flight(WebDriver driver,String flightname) {
+	public static void select_flight(WebDriver driver,int testrow) {
+		
+		String flightname = ExcelUtils.getStringValue(testrow, 8);
 		
 		List<WebElement> flights=driver.findElements(By.xpath("//p[@class='travel-company-name ng-binding']"));
 		

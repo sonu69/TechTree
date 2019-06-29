@@ -10,6 +10,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
@@ -25,10 +27,12 @@ public class Flights {
 	WebDriver driver;
 	public ExtentReports report;
 	public ExtentTest logger;
+	private static int TestCase_Row;
 	
 	@BeforeClass
-	public void bc() {
-		driver=BrowserFactory.openBrowser();	 
+	public void bc() throws FileNotFoundException, IOException {
+		TestCase_Row=ExcelUtils.getRowContains("TestCase_LCC1");
+		driver=BrowserFactory.openBrowser(TestCase_Row);	 
 	}
 	
 	@BeforeSuite
