@@ -26,7 +26,6 @@ public class FlightSelect_Page {
 			}	
 		}
 	}
-
 	
 	
 	public static void select_flight(WebDriver driver) {

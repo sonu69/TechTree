@@ -9,6 +9,7 @@ import actions.BookingDetail_Page;
 import actions.FlightSelect_Page;
 import actions.Payment_Actions;
 import actions.Search_Inputs;
+import pageObjects.ChangeCountry_Page;
 import pageObjects.Itinerary_Page;
 import pageObjects.SearchFlight_Page;
 import pageObjects.YourEmailId_Page;
@@ -18,17 +19,19 @@ public class Test {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 
-		//ChangeCountry_Page.change_country(driver, "India").click();
-				
-		//ChangeCountry_Page.change_currency(driver, "AED").click();
-
 		int TestCase_Row=ExcelUtils.getRowContains(Constants.testcase_name);
 		
 		WebDriver driver = BrowserFactory.openBrowser(TestCase_Row);
 		
+		ChangeCountry_Page.change_country(driver, TestCase_Row).click();
+				
+		ChangeCountry_Page.change_currency(driver, TestCase_Row).click();
+		
 		Search_Inputs.add_origin(driver,TestCase_Row);
 				
 				Search_Inputs.add_destination(driver,TestCase_Row);
+				
+				System.exit(0);
 
 				Search_Inputs.journeydate(driver,TestCase_Row);
 				

@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import framework.ExcelUtils;
+import utils.Constants;
+
 public class ChangeCountry_Page {
 	private static WebElement element;
 	
@@ -21,14 +24,17 @@ public class ChangeCountry_Page {
 	}
 
 
-	public static WebElement change_country(WebDriver driver,String name) throws InterruptedException{
+	public static WebElement change_country(WebDriver driver, int testrow) throws InterruptedException{
+		
+		String name = ExcelUtils.getStringValue(testrow, Constants.country_col);
+		
 		ChangeCountry_Page.region_selection(driver).click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		
 		ChangeCountry_Page.country(driver).click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		
 		if(name.equalsIgnoreCase("india")) {
 			element = driver.findElement(By.xpath("//ul/li[@title='India']"));
@@ -65,8 +71,9 @@ public class ChangeCountry_Page {
 	
 	
 	
-	public static WebElement change_currency(WebDriver driver,String name) throws InterruptedException{
+	public static WebElement change_currency(WebDriver driver,int testrow) throws InterruptedException{
 		
+		String name = ExcelUtils.getStringValue(testrow, Constants.currency_col);
 		ChangeCountry_Page.region_selection(driver).click();
 		
 		Thread.sleep(2000);
