@@ -7,12 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import framework.ExcelUtils;
+import utils.Constants;
 
 public class FlightSelect_Page {
 	
 	public static void select_flight(WebDriver driver,int testrow) {
 		
-		String flightname = ExcelUtils.getStringValue(testrow, 8);
+		String flightname = ExcelUtils.getStringValue(testrow, Constants.flightname_col);
 		
 		List<WebElement> flights=driver.findElements(By.xpath("//p[@class='travel-company-name ng-binding']"));
 		
@@ -21,9 +22,11 @@ public class FlightSelect_Page {
 		for(int j=0;j<flights.size();j++) {
 
 			if(flights.get(j).getText().equalsIgnoreCase(flightname)) {
+	
 				select_buttons.get(j).click();
 				break;
-			}	
+			}
+			else {}
 		}
 	}
 	

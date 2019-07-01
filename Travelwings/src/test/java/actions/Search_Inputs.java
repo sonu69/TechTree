@@ -158,7 +158,7 @@ public class Search_Inputs {
 		String month=driver.findElements(By.xpath("//div[@class='ui-datepicker-title']/span[@class='ui-datepicker-month']")).get(0).getText();
 		
 		if(month.equalsIgnoreCase(return_month)) {
-			System.out.println("month selected");	
+			
 		}else {
 			for(int i=1;i<12;i++) {
 				WebElement next_month=driver.findElement(By.xpath("//body[@class='ng-scope']/div[3]/div[2]/div/a[@title='Next']"));

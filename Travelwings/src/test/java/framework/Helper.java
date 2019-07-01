@@ -19,6 +19,7 @@ import org.openqa.selenium.io.FileHandler;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+import utils.Constants;
 
 
 public class Helper {
@@ -83,6 +84,17 @@ public static String captureScreenshot(WebDriver driver) {
 		
 	}
 
+	public static void find_flight(WebDriver driver, WebElement element) {
+		String flightname = ExcelUtils.getStringValue(1, Constants.flightname_col);
+		
+		element = driver.findElements(By.xpath("//p[contains(text()='"+flightname+"')]")).get(0);
+		
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		
+	}
+	
+	
+	
 	
 	
 	public static String getCurrentDateTime() {

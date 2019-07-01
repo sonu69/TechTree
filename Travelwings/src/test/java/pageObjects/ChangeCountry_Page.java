@@ -82,7 +82,7 @@ public class ChangeCountry_Page {
 		
 		Thread.sleep(2000);
 		
-		if(name.equalsIgnoreCase("aed")) {
+		if(name.equalsIgnoreCase("AED")) {
 			element = driver.findElement(By.xpath("//li[@title='AED']"));
 		}
 		

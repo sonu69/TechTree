@@ -7,16 +7,22 @@ import java.io.IOException;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import utils.Constants;
+
 public class ExcelUtils {
 	
 static XSSFSheet sh;
 
 	public static void excel()  {
 		try {
-			File fl = new File(".//Data//Test_Data.xlsx");
+			File fl = new File(Constants.Excel_pat);
 			FileInputStream fis = new FileInputStream(fl);
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
-			sh = wb.getSheetAt(0);}
+			//sh = wb.getSheetAt(0);
+			sh = wb.getSheet(Constants.sheet_name);
+			
+		
+		}
 		
 		
 		
@@ -35,7 +41,7 @@ static XSSFSheet sh;
 			return sh.getRow(row).getCell(cell).getStringCellValue() ;
 		} 
 		catch (Exception e) {
-			return "sonu";
+			return "";
 		}
 		
 	}
@@ -45,8 +51,12 @@ static XSSFSheet sh;
 	public static int getIntValue(int row, int cell) throws IOException {
 		excel();
 		//return sh.getRow(row).getCell(cell).getNumericCellValue();
+		try {
 		int data = (int) sh.getRow(row).getCell(cell).getNumericCellValue();
-		return data;
+		}
+		catch(Exception e) {
+		}
+		return 0;
 	}
 	
 	
