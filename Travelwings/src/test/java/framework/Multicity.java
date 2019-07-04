@@ -26,7 +26,7 @@ import pageObjects.YourEmailId_Page;
 public class Multicity {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		int TestCase_Row=ExcelUtils.getRowContains("TestCase_LCC1");	
+			
 		System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
 		WebDriver driver = new ChromeDriver();
 				driver.manage().window().maximize();
@@ -41,6 +41,20 @@ public class Multicity {
 				List <WebElement> origins = driver.findElements(By.xpath("//input[contains(@id,'origin_')]"));
 				List <WebElement> destinations = driver.findElements(By.xpath("//input[contains(@id,'destination_')]"));
 				
+//				for(int i=0;i<origins.size();i++) {
+//				String origin = ExcelUtils.getStringValue(49+i, 1);
+//				origins.get(i).clear();
+//				origins.get(i).sendKeys(origin);				
+//				SearchFlight_Page.elementlocator(driver, origin);
+//				
+//				}
+				
+				String origin = ExcelUtils.getStringValue(49, 1);
+				origins.get(0).clear();
+				origins.get(0).sendKeys(origin);				
+				SearchFlight_Page.elementlocator(driver, origin);
+				
+				
 				for(int i=0;i<destinations.size();i++) {
 				String destination = ExcelUtils.getStringValue(49+i, 2);
 				destinations.get(i).clear();
@@ -48,17 +62,9 @@ public class Multicity {
 				SearchFlight_Page.elementlocator(driver, destination);
 				}
 
-				for(int i=0;i<origins.size();i++) {
-				String origin = ExcelUtils.getStringValue(49+i, 1);
-				origins.get(i).clear();
-				origins.get(i).sendKeys(origin);				
-				SearchFlight_Page.elementlocator(driver, origin);
+				Search_Inputs.journeydate(driver,50);
 				
-				}				
-
-				Search_Inputs.journeydate(driver,TestCase_Row);
-				
-				Search_Inputs.pax_list(driver,TestCase_Row);
+				Search_Inputs.pax_list(driver,50);
 				
 				Thread.sleep(2000);
 				
@@ -66,26 +72,21 @@ public class Multicity {
 				
 				Thread.sleep(10000);
 				
-				FlightSelect_Page.select_flight(driver);
+				FlightSelect_Page.add_flight(driver);
 				
 				Itinerary_Page.continue_itinerary(driver).click();
 				
-				YourEmailId_Page.account_login(driver,TestCase_Row);
+				YourEmailId_Page.account_login(driver,50);
 				
 				Addpax_Actions.execute(driver);
 				
-				Payment_Actions.payment_action(driver,TestCase_Row);
+				Payment_Actions.payment_action(driver,50);
 
 				BookingDetail_Page.booking_status(driver);
 				
 				BookingDetail_Page.booking_detail(driver);
 						
 	}
-	
-	
-
-	
-	
 	
 
 }

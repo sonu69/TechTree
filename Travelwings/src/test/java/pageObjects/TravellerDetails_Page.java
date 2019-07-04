@@ -323,11 +323,12 @@ public class TravellerDetails_Page {
 		for(int i=0;i<onward_bag.size();i++) {
 		
 		Select sl = new Select(onward_bag.get(i));
-		sl.selectByIndex(0);
+		sl.selectByIndex(1);
 		
 		}
 	}
 }
+
 	
 	public static void return_baggage(WebDriver driver,int testrow) {
 		
@@ -341,7 +342,7 @@ public class TravellerDetails_Page {
 			
 		for(int i=0;i<return_bag.size();i++) {
 		Select sl = new Select(return_bag.get(i));
-		sl.selectByIndex(1);	
+		sl.selectByIndex(2);	
 		}
 		}
 	}
@@ -356,8 +357,8 @@ public class TravellerDetails_Page {
 			List <WebElement> onward_meal = driver.findElements(By.xpath("//select[contains(@name,'onwardSpecialServiceMeal')]"));
 			
 			for(int i=0;i<onward_meal.size();i++) {
-			Select sl = new Select(onward_meal.get(0));
-			sl.selectByIndex(i);
+			Select sl = new Select(onward_meal.get(i));
+			sl.selectByIndex(1);
 				
 			}
 			
@@ -377,7 +378,7 @@ public class TravellerDetails_Page {
 			
 			for(int i=0;i<return_meal.size();i++) {
 			Select sl = new Select(return_meal.get(i));
-			sl.selectByIndex(1);
+			sl.selectByIndex(2);
 			}
 		}
 	}

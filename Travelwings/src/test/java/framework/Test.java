@@ -37,15 +37,13 @@ public class Test {
 				
 		Search_Inputs.pax_list(driver,TestCase_Row);
 				
-		//Search_Inputs.flight_name(driver,TestCase_Row);
+		Search_Inputs.flight_name(driver,TestCase_Row);
 				
 		Thread.sleep(2000);
 				
 		SearchFlight_Page.search_flight(driver).click();
 				
 		Thread.sleep(10000);
-		
-		//FlightSelect_Page.select_flight(driver);
 		
 		FlightSelect_Page.select_flight(driver,TestCase_Row);
 		
@@ -59,11 +57,11 @@ public class Test {
 		
 		Addpax_Actions.execute(driver);
 		
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		
 		Addpax_Actions.ssr(driver,TestCase_Row);
 		
-		Thread.sleep(2000);
+		
 		
 		Payment_Actions.payment_action(driver, TestCase_Row);
 

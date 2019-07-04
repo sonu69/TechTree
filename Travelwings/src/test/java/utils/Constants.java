@@ -8,7 +8,7 @@ public class Constants {
 	
 	public static final String url = "https://test.techtreeit.in/";
 	
-	public static final String testcase_name ="TestCase_LCC2";
+	public static final String testcase_name ="TestCase_LCC1";
 	
 	public static final int testcasename_col=0;
 	
@@ -56,10 +56,11 @@ public class Constants {
 	
 	public static final int browser_col=22;
 	
-	public static final int airline_col = 23;
+	public static final int preferred_airline = 23;
 	
 	public static final int country_col = 24;
 	
 	public static final int currency_col = 25;
+	
 	
 }

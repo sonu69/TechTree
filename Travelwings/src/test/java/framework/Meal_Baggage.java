@@ -49,7 +49,7 @@ public class Meal_Baggage {
 				
 				Thread.sleep(10000);
 				
-				FlightSelect_Page.select_flight(driver);
+				FlightSelect_Page.select_flight(driver,TestCase_Row);
 				
 				Itinerary_Page.continue_itinerary(driver).click();
 				

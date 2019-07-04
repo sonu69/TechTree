@@ -10,7 +10,7 @@ public class Payment_Page {
 	private static WebElement element;
 	
 	public static WebElement card_number(WebDriver driver) {
-		element = driver.findElement(By.xpath("//input[@id='cardNumber']"));
+		element = driver.findElement(By.xpath("//input[@id='newcardno']"));
 		return element;
 	}
 	

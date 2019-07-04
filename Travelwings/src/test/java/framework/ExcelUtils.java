@@ -36,7 +36,7 @@ static XSSFSheet sh;
 	
 	public static String getStringValue(int row, int cell) {
 		excel();
-		//return sh.getRow(row).getCell(cell).getStringCellValue() ;
+		 
 		try {
 			return sh.getRow(row).getCell(cell).getStringCellValue() ;
 		} 
@@ -50,9 +50,9 @@ static XSSFSheet sh;
 	
 	public static int getIntValue(int row, int cell) throws IOException {
 		excel();
-		//return sh.getRow(row).getCell(cell).getNumericCellValue();
+		 
 		try {
-		int data = (int) sh.getRow(row).getCell(cell).getNumericCellValue();
+		return (int) sh.getRow(row).getCell(cell).getNumericCellValue();
 		}
 		catch(Exception e) {
 		}

@@ -42,6 +42,7 @@ public class Seat_Selection {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		driver.manage().deleteAllCookies();
+		
 		int TestCase_Row=ExcelUtils.getRowContains("TestCase_LCC1");
 				
 				Search_Inputs.add_origin(driver,TestCase_Row);
@@ -62,7 +63,7 @@ public class Seat_Selection {
 				
 				Thread.sleep(10000);
 				
-				FlightSelect_Page.select_flight(driver);
+				FlightSelect_Page.select_flight(driver,TestCase_Row);
 				
 				Itinerary_Page.continue_itinerary(driver).click();
 				
