@@ -61,8 +61,6 @@ public class Test {
 		
 		Addpax_Actions.ssr(driver,TestCase_Row);
 		
-		
-		
 		Payment_Actions.payment_action(driver, TestCase_Row);
 
 		BookingDetail_Page.booking_status(driver);

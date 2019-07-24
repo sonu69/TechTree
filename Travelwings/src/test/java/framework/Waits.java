@@ -22,4 +22,7 @@ public class Waits {
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
+	
+	
+	
 }
