@@ -83,7 +83,16 @@ public static String captureScreenshot(WebDriver driver) {
 		js.executeScript("arguments[0].click();",element);
 		
 	}
+	
+	
+	public static void entervalue(WebDriver driver, WebElement element, String sonu) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;	
+		js.executeScript("arguments[0].value='sonu'",element);
+	}
 
+	
+	
+	
 	public static void find_flight(WebDriver driver, WebElement element) {
 		String flightname = ExcelUtils.getStringValue(1, Constants.flightname_col);
 		

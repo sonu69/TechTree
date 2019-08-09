@@ -2,8 +2,15 @@ package framework;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import actions.Addpax_Actions;
 import actions.BookingDetail_Page;
 import actions.FlightSelect_Page;
@@ -47,6 +54,12 @@ public class Test {
 		
 		FlightSelect_Page.select_flight(driver,TestCase_Row);
 		
+		Thread.sleep(1000);
+
+		WebElement continue_button = driver.findElement(By.xpath("//div[@class='text-right continue']/button[text()='CONTINUE']"));
+
+		//driver.findElements(By.xpath("//button[text()='CONTINUE']")).get(0).click();
+
 		Helper.Webelement(driver, Itinerary_Page.continue_itinerary(driver));
 		
 		Thread.sleep(1000);
@@ -60,6 +73,8 @@ public class Test {
 		Thread.sleep(5000);
 		
 		Addpax_Actions.ssr(driver,TestCase_Row);
+		
+		System.exit(0);
 		
 		Payment_Actions.payment_action(driver, TestCase_Row);
 

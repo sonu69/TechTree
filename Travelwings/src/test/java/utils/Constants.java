@@ -6,7 +6,7 @@ public class Constants {
 	
 	public static final String sheet_name = "Sheet1";
 	
-	public static final String url = "https://test.techtreeit.in/";
+	public static final String url = "https://test.techtreeit.in";
 	
 	public static final String testcase_name ="TestCase_LCC1";
 	

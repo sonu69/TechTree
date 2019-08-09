@@ -258,6 +258,9 @@ public class Flights {
 			
 	Waits.ewait(driver, status_message, 50);
 	
+	
+	
+	
 	if(status_message.getText().equalsIgnoreCase("Booking Confirmation")) {
 		System.out.println("Booking success");
 	}
@@ -265,6 +268,9 @@ public class Flights {
 	else if(status_message.getText().equalsIgnoreCase("Booking Failed")) {
 		System.out.println("Booking failed");
 	}
+	
+	
+	
 	
 	WebElement Reference_number1=driver.findElement(By.xpath("//b[@data-ng-bind='booking.fbRefrenceNo']"));
 	String Reference_number = Reference_number1.getText();

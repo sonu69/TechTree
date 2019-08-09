@@ -17,6 +17,8 @@ public class TravellerDetails_Page {
 	
 	public static void add_pax(WebDriver driver) throws IOException {
 		
+	//List<WebElement> adults = driver.findElements(By.xpath("//h6[contains(text(),'Adult')]"));
+	
 	List<WebElement> adults = driver.findElements(By.xpath("//h6[contains(text(),'Adult')]"));
 	
 	List<WebElement> childs = driver.findElements(By.xpath("//h6[contains(text(),'Child')]"));
@@ -39,6 +41,8 @@ public class TravellerDetails_Page {
 	
 	List <WebElement> nationality = driver.findElements(By.xpath("//select[@id='countryId']"));
 	
+	
+	
 		
 	int adult_size = adults.size();
 	int child_size = childs.size();
@@ -46,6 +50,11 @@ public class TravellerDetails_Page {
 	
 	
 	for(int i=0;i<adult_size;i++) {
+		
+		if(i>=1) {
+		adults.get(i).click();
+		}
+		
 		
 		Select sl = new Select(titles.get(i));
 		String title = ExcelUtils.getStringValue(69+i, 0);
@@ -101,6 +110,8 @@ public class TravellerDetails_Page {
 	
 	int m =adult_size;
 	for(int j=0;j<child_size;j++) {
+		
+		childs.get(j).click();
 		
 		Select sl = new Select(titles.get(j+m));
 		String title = ExcelUtils.getStringValue(78+j, 0);
@@ -161,6 +172,8 @@ public class TravellerDetails_Page {
 	
 	int l =adult_size+child_size;
 	for(int k=0;k<infant_size;k++) {
+		
+		infants.get(k).click();
 		
 		Select sl = new Select(titles.get(k+l));
 		String title = ExcelUtils.getStringValue(90+k, 0);
@@ -351,8 +364,8 @@ public class TravellerDetails_Page {
 		
 		if(owrd_meal.equalsIgnoreCase("YES") ) {
 			
+			//List <WebElement> onward_meal = driver.findElements(By.xpath("//select[contains(@name,'onwardSpecialServiceMeal')]"));
 			List <WebElement> onward_meal = driver.findElements(By.xpath("//select[contains(@name,'onwardSpecialServiceMeal')]"));
-			
 			for(int i=0;i<onward_meal.size();i++) {
 			Select sl = new Select(onward_meal.get(i));
 			sl.selectByIndex(1);
