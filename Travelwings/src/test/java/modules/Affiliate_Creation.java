@@ -22,13 +22,8 @@ public class Affiliate_Creation {
 		String path=System.getProperty("user.dir");
 		
 		System.setProperty("webdriver.chrome.driver", path+"/Drivers/chromedriver");
-		//System.setProperty("webdriver.chrome.driver", ".//Drivers//chromedriver");
-		 
-		 //System.setProperty("webdriver.chrome.driver", "/home/ttuser/Downloads/chromedriver_linux64 (3)/chromedriver");
-		 
-		 
-		//WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
+			
+		 WebDriver driver = new ChromeDriver();
 		 driver.get("https://test.techtreeit.in/twnc/");
 		 driver.manage().window().maximize();
 		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -36,16 +31,12 @@ public class Affiliate_Creation {
 		 JavascriptExecutor js = (JavascriptExecutor) driver;
 		 Actions act = new Actions(driver);
 		 WebDriverWait wait = new WebDriverWait(driver,10);
-		 
-		 
 		 js.executeScript("arguments[0].value='twadmin'",driver.findElement(By.xpath("//input[@id='userAlias']")));
-		 //driver.findElement(By.xpath("//input[@id='userAlias']")).sendKeys("twadmin");
 		 
-		 //js.executeScript("arguments[0].value='twadmin'",driver.findElement(By.xpath("//input[@id='password_password']")));
-		 driver.findElement(By.xpath("//input[@id='password_password']")).sendKeys("twadmin");
+		 	 
+		 driver.findElement(By.xpath("//input[@id='password_password']")).sendKeys("a");
 		 
 		 Thread.sleep(2000);
-		 
 		 
 		 driver.findElement(By.xpath("//input[@id='login_id']")).click();
 
@@ -53,34 +44,20 @@ public class Affiliate_Creation {
 		 
 		 driver.findElement(By.xpath("//a[@id='add_click']")).click();
 		 
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliatePartnerName')]")).sendKeys(Affiliate_Values.partner_name);
 		 
-		 		 
-		 //js.executeScript("arguments[0].value='AFT114'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliateCode')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliateCode')]")).sendKeys("AFT001");
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliateDescription')]")).sendKeys(Affiliate_Values.Partner_description);
 		 
-		 //js.executeScript("arguments[0].value='Bihar'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliatePartnerName')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliatePartnerName')]")).sendKeys("Bihar");
-		 
-		 //js.executeScript("arguments[0].value='this is just for the testing purpose'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliateDescription')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliateDescription')]")).sendKeys("this is just for the testing purpose");
-		 
-		 //js.executeScript("arguments[0].value='https://www.google.com'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'partnerWebsite')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'partnerWebsite')]")).sendKeys("https://www.google.com");
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'partnerWebsite')]")).sendKeys(Affiliate_Values.partner_website);
 		 
 		 driver.findElement(By.xpath("//div[@id='mutti_select']")).click();
 		 
-		 String product1 = "All";
-		 
-		 WebElement el = driver.findElements(By.xpath("//label[text()='"+product1+"']")).get(0);
-		 wait.until(ExpectedConditions.elementToBeClickable(el));
-		 el.click();
-		 
-		 
-		 
+		 String product1 = Affiliate_Values.Product;
+		 wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//input[contains(@value,'"+product1+"')]")))).click();
 		 
 		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.formdata.activationPeriodFrom2')]")).click();
 		 
-		 String from_date = "25-Aug-2019";
+		 String from_date = Affiliate_Values.from_date;
 		 
 		 String[] fd = from_date.split("-");
 		 String from_month = fd[1];
@@ -97,7 +74,7 @@ public class Affiliate_Creation {
 		 
 		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.formdata.activationPeriodEnd2')]")).click();
 		 
-		 String to_date = "30-Oct-2019";
+		 String to_date = Affiliate_Values.to_date;
 		 
 		 String[] to = to_date.split("-");
 		 String to_month = to[1];
@@ -112,100 +89,132 @@ public class Affiliate_Creation {
 		 
 		 driver.findElement(By.xpath("//a[contains(@class,'ui-state-default') and text()='"+to_day+"']")).click();
 		 
+		 String operating_country=Affiliate_Values.country;
+		 driver.findElement(By.xpath("//input[contains(@id,'travelwingsCountryName')]")).sendKeys(operating_country);
 		 
-		 driver.findElement(By.xpath("//input[contains(@id,'travelwingsCountryName')]")).sendKeys("ind");
-		 
-		 List<WebElement> cont = driver.findElements(By.xpath("//li[@class='ui-menu-item' and text()='India']"));
+		 List<WebElement> cont = driver.findElements(By.xpath("//li[@class='ui-menu-item' and text()='"+operating_country+"']"));
 		 act.moveToElement(cont.get(0)).click().build().perform();
 		 
 		 driver.findElement(By.xpath("//label[@for='surcharges']")).click();
 		 
-		 
 		 driver.findElement(By.xpath("//a[@class='isDisabled']")).click();
 		 
-		 String card = "All";
+		 String card = Affiliate_Values.creditcard_type;
 		 WebElement cd = driver.findElements(By.xpath("//label[text()='"+card+"']")).get(1);
 		 wait.until(ExpectedConditions.elementToBeClickable(cd));
 		 cd.click();
 		 Thread.sleep(2000);
 		 
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliateCode')]")).sendKeys(Affiliate_Values.partner_id);
+		 
 		 WebElement sourceinfo = driver.findElement(By.xpath("//input[contains(@data-ng-model,'sourceInfo')]"));
 		 wait.until(ExpectedConditions.elementToBeClickable(sourceinfo));
-		 js.executeScript("arguments[0].value='Bihar1'",sourceinfo);
-		 Thread.sleep(2000);
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'sourceInfo')]")).sendKeys(Affiliate_Values.source_info);
+
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'paramThree')]")).sendKeys(Affiliate_Values.parameter_three);
+		 
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'paramFour')]")).sendKeys(Affiliate_Values.parameter_four);
 		 
 		 
-		 //js.executeScript("arguments[0].value='Bihar2'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'paramThree')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'paramThree')]")).sendKeys("Bihar2");
+		 if(product1.equalsIgnoreCase("All")) {
+			 
+			 String flight = Affiliate_Values.commision_product1;
+			 Select sl = new Select(driver.findElement(By.xpath("//select[contains(@data-ng-model,'affiliate.flightComm.selectedProduct')]")));
+			 sl.selectByVisibleText(flight);
+			 
+			 String Partnership_type = Affiliate_Values.Partnership_type1;
+			 Select sl1 = new Select(driver.findElement(By.xpath("//select[contains(@data-ng-model,'affiliate.flightComm.partnershipType')]")));
+			 sl1.selectByVisibleText(Partnership_type);
+			 
+			 String amount = Affiliate_Values.amount1;
+			 Select sl2 = new Select(driver.findElement(By.xpath("//select[contains(@data-ng-model,'affiliate.flightComm.modeOfCommission')]")));
+			 sl2.selectByVisibleText(amount);
+			 
+			 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.flightComm.valuePerTxn')]")).sendKeys(Affiliate_Values.value_transaction1);
+			 
+			 Select number_search = new Select(driver.findElement(By.xpath("//select[@id='noOfSearch1']")));
+			 String searches = Affiliate_Values.searches1;
+			 number_search.selectByVisibleText(searches);
+			 
+			 String hotel = Affiliate_Values.commision_product2;
+			 Select slh = new Select(driver.findElement(By.xpath("//select[@id='commissionProducts2']")));
+			 slh.selectByVisibleText(hotel);
+			 
+			 Select hotel_partnership = new Select(driver.findElement(By.xpath("//select[@id='ddl12']")));
+			 hotel_partnership.selectByVisibleText("Transaction");
+			 
+			 Select hotel_amount = new Select(driver.findElement(By.xpath("//select[@id='ddl22']")));
+			 hotel_amount.selectByVisibleText("Amount");
+			 
+			 driver.findElement(By.xpath("//input[@id='valueTxn2']")).sendKeys(Affiliate_Values.value_transaction2);
+			 
+		 }
 		 
-		 //js.executeScript("arguments[0].value='Bihar3'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'paramFour')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'paramFour')]")).sendKeys("Bihar3");
+		 else if (product1.equalsIgnoreCase("Hotel")) {
+			 Select hotel = new Select(driver.findElement(By.xpath("//select[@id='commissionProducts2']")));
+			 hotel.selectByVisibleText("Hotel");
+			 
+			 Select hotel_partnership = new Select(driver.findElement(By.xpath("//select[@id='ddl12']")));
+			 hotel_partnership.selectByVisibleText("Transaction");
+			 
+			 Select hotel_amount = new Select(driver.findElement(By.xpath("//select[@id='ddl22']")));
+			 hotel_amount.selectByVisibleText("Amount");
+			 
+			 driver.findElement(By.xpath("//input[@id='valueTxn2']")).sendKeys(Affiliate_Values.value_transaction2);
+		 }
 		 
-		 String product = "Hotel";
-		 Select sl = new Select(driver.findElement(By.xpath("//select[contains(@data-ng-model,'comm.selectedProduct')]")));
-		 sl.selectByVisibleText(product);
-		 
-		 String Partnership_type = "CPC";
-		 Select sl1 = new Select(driver.findElement(By.xpath("//select[contains(@data-ng-model,'comm.partnershipType')]")));
-		 sl1.selectByVisibleText(Partnership_type);
-		 
-		 String amount = "Amount";
-		 Select sl2 = new Select(driver.findElement(By.xpath("//select[contains(@data-ng-model,'comm.modeOfCommission')]")));
-		 sl2.selectByVisibleText(amount);
-		 
-		 
-		 //js.executeScript("arguments[0].value='50'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'comm.valuePerTxn')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'comm.valuePerTxn')]")).sendKeys("50");
-		 
-		 //js.executeScript("arguments[0].value='5000'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'comm.noOfSearch')]")));
-		 //driver.findElement(By.xpath("//input[contains(@data-ng-model,'comm.noOfSearch')]")).sendKeys("5000");
-		 
-		 Select number_search = new Select(driver.findElement(By.xpath("//select[@id='noOfSearch0']")));
-		 String searches = "1000 - 5000";
-		 number_search.selectByVisibleText(searches);
+		 else if (product1.equalsIgnoreCase("Flight")) {
+			 
+			 String product = Affiliate_Values.commision_product1;
+			 Select sl = new Select(driver.findElement(By.xpath("//select[contains(@data-ng-model,'affiliate.flightComm.selectedProduct')]")));
+			 sl.selectByVisibleText(product);
+			 
+			 String Partnership_type = Affiliate_Values.Partnership_type1;
+			 Select sl1 = new Select(driver.findElement(By.xpath("//select[contains(@data-ng-model,'affiliate.flightComm.partnershipType')]")));
+			 sl1.selectByVisibleText(Partnership_type);
+			 
+			 String amount = Affiliate_Values.amount1;
+			 Select sl2 = new Select(driver.findElement(By.xpath("//select[contains(@data-ng-model,'affiliate.flightComm.modeOfCommission')]")));
+			 sl2.selectByVisibleText(amount);
+			 
+			 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.flightComm.valuePerTxn')]")).sendKeys(Affiliate_Values.value_transaction1);
+			 
+			 Select number_search = new Select(driver.findElement(By.xpath("//select[@id='noOfSearch1']")));
+			 String searches = Affiliate_Values.searches1;
+			 number_search.selectByVisibleText(searches);
+			 
+		 }
 		 
 		 
 		 driver.findElement(By.xpath("//label[contains(@for,'auto-trigger')]")).click();
 		 
-		 //js.executeScript("arguments[0].value='sonu111@yopmail.com'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.commission.email')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.commission.email')]")).sendKeys("sonu111@yopmail.com");
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.commission.email')]")).sendKeys(Affiliate_Values.email_id);
 		 
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.commission.cpcValue')]")).sendKeys(Affiliate_Values.cpc_value);
 		 
-		 js.executeScript("arguments[0].value='1000'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.commission.cpcValue')]")));
-		 //driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.commission.cpcValue')]")).sendKeys("1000");
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.commission.lookToBookRatio')]")).sendKeys(Affiliate_Values.l2b);
 		 
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.name')]")).sendKeys(Affiliate_Values.name);
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.email')]")).sendKeys(Affiliate_Values.email);
 		 
-		 //js.executeScript("arguments[0].value='2.50'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.commission.lookToBookRatio')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.commission.lookToBookRatio')]")).sendKeys("2.50");
-		 
-		 
-		 //js.executeScript("arguments[0].value='Lata dev'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.name')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.name')]")).sendKeys("Lata dev");
-		 
-		 //js.executeScript("arguments[0].value='sonu111@yopmail.com'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.email')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.email')]")).sendKeys("sonu321@yopmail.com");
-		 
-		 //js.executeScript("arguments[0].value='9874563210'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.phoneNo')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.phoneNo')]")).sendKeys("9874563210");
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.phoneNo')]")).sendKeys(Affiliate_Values.phone);
 		 Thread.sleep(2000);
 		 
-		 driver.findElement(By.xpath("//div[@class='col-md-4 add_blocktb']/input[contains(@data-ng-model,'contact.country')]")).sendKeys("india");
+		 driver.findElement(By.xpath("//div[@class='col-md-4 add_blocktb']/input[contains(@data-ng-model,'contact.country')]")).sendKeys(Affiliate_Values.contact_country);
 		 
+		 String add_country=Affiliate_Values.contact_country;
 		 List<WebElement> india = driver.findElements(By.xpath("//li[@class='ui-menu-item' and text()='India']"));
 		 act.moveToElement(india.get(0)).click().build().perform();
 
 		 WebElement city = driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.city')]"));
-		 //js.executeScript("arguments[0].value='Ashoke'",city);
 		 
-		 city.sendKeys("Ashoke");
+		 city.sendKeys(Affiliate_Values.city);
 		 
-		 //js.executeScript("arguments[0].value='896523'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.pincode')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.pincode')]")).sendKeys("896523");
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.pincode')]")).sendKeys(Affiliate_Values.pincode);
 		 
 		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'contact.agreementExpiryDate1')]")).click();
 		 
-		 
-		 String exp_date = "30-Dec-2019";
+		 String exp_date = Affiliate_Values.agreement_exp;
 		 
 		 String[] exp = exp_date.split("-");
 		 String exp_month = exp[1];
@@ -220,47 +229,35 @@ public class Affiliate_Creation {
 		 
 		 driver.findElement(By.xpath("//a[contains(@class,'ui-state-default') and text()='"+exp_day+"']")).click();
 		
+		 driver.findElement(By.xpath("//textarea[contains(@data-ng-model,'contact.address')]")).sendKeys(Affiliate_Values.address);
 		 
-		 //js.executeScript("arguments[0].value='B163, new'",driver.findElement(By.xpath("//textarea[contains(@data-ng-model,'contact.address')]")));
-		 driver.findElement(By.xpath("//textarea[contains(@data-ng-model,'contact.address')]")).sendKeys("B163,new");
+		 Thread.sleep(1000);
 		 
-		 //js.executeScript("arguments[0].value='/home/ttuser/Downloads/Shivam_shekhar_QA.pdf'",driver.findElement(By.xpath("//input[contains(@id,'file_0')]")));
-		 //driver.findElement(By.xpath("//input[contains(@id,'file_0')]")).sendKeys("/home/ttuser/Downloads/Shivam_shekhar_QA.pdf");
+		 driver.findElement(By.xpath("//input[contains(@id,'file_0')]")).sendKeys("/home/ttuser/Downloads/ARYA.pdf.pdf");
 		 
-		 Thread.sleep(2000);
-		 
-		 driver.findElement(By.xpath("//input[contains(@id,'file_0')]")).sendKeys("/home/ttuser/Pictures/4th June/1.png");
+		 Thread.sleep(1000);
+		 driver.findElement(By.xpath("//input[contains(@id,'file_0')]")).sendKeys("/home/ttuser/Downloads/twbr-f3058.pdf");
 		 
 		 
-		 String payment_mode = "Cash";
+		 String payment_mode = Affiliate_Values.payment_mode;
 		 Select ls = new Select(driver.findElement(By.xpath("//select[contains(@id,'payment_mode')]")));
 		 ls.selectByVisibleText(payment_mode);
 		 
-		 //js.executeScript("arguments[0].value='1234567896'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.settelmentDetails.bankAccountNumber')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.settelmentDetails.bankAccountNumber')]")).sendKeys("1234567896");
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.settelmentDetails.bankAccountNumber')]")).sendKeys(Affiliate_Values.bank_account);
 		 
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.settelmentDetails.accountType')]")).sendKeys(Affiliate_Values.account_type);
 		 
-		 //js.executeScript("arguments[0].value='savings'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.settelmentDetails.accountType')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.settelmentDetails.accountType')]")).sendKeys("savings");
-		 
-		 //js.executeScript("arguments[0].value='HDFC'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.settelmentDetails.bankName')]")));
-		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.settelmentDetails.bankName')]")).sendKeys("HDFC");
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.settelmentDetails.bankName')]")).sendKeys(Affiliate_Values.bank_name);
 		
-		 String currency = "USD";
+		 String currency = Affiliate_Values.currency;
 		 Select cr = new Select(driver.findElement(By.id("percentage_amount")));
 		 cr.selectByVisibleText(currency);
 		 
-		 js.executeScript("arguments[0].value='1111'",driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.settelmentDetails.settelmentPeriod')]")));
+		 driver.findElement(By.xpath("//input[contains(@data-ng-model,'affiliate.settelmentDetails.settelmentPeriod')]")).sendKeys(Affiliate_Values.settlement_period);
+		 driver.findElement(By.xpath("//textarea[contains(@data-ng-model,'affiliate.settelmentDetails.remarks')]")).sendKeys(Affiliate_Values.remarks);
+		 System.exit(0);
 		 
-//		 String period = "Half Yearly";
-//		 Select pr = new Select(driver.findElement(By.xpath("//select[contains(@data-ng-model,'affiliate.settelmentDetails.settelmentPeriod')]")));
-//		 pr.selectByVisibleText(period);
-		 
-		 //js.executeScript("arguments[0].value='Success'",driver.findElement(By.xpath("//textarea[contains(@data-ng-model,'affiliate.settelmentDetails.remarks')]")));
-		 driver.findElement(By.xpath("//textarea[contains(@data-ng-model,'affiliate.settelmentDetails.remarks')]")).sendKeys("Success");
-		  
-		 
-		 driver.findElement(By.xpath("//input[contains(@data-ng-click,'affiliate.formSubmit2()')]")).click();
+		driver.findElement(By.xpath("//input[contains(@data-ng-click,'affiliate.formSubmit2()')]")).click();
 	
 	}
 

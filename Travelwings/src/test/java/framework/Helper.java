@@ -80,14 +80,18 @@ public static String captureScreenshot(WebDriver driver) {
 	public static void Webelement(WebDriver driver, WebElement element) {
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;	
+		
 		js.executeScript("arguments[0].click();",element);
+		//element.click();
 		
 	}
 	
 	
 	public static void entervalue(WebDriver driver, WebElement element, String sonu) {
+		
 		JavascriptExecutor js = (JavascriptExecutor) driver;	
 		js.executeScript("arguments[0].value='sonu'",element);
+		
 	}
 
 	

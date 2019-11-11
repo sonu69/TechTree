@@ -24,14 +24,11 @@ public class YourEmailId_Page {
 		String username = ExcelUtils.getStringValue(testrow, Constants.email_col);
 		
 		String password = ExcelUtils.getStringValue(testrow, Constants.password_col);
-		Thread.sleep(5000);
 		
-		//driver.findElement(By.xpath("//input[@data-ng-model='booking.availableAccount.checked']")).click();
+		Thread.sleep(1000);
+		
 		driver.findElement(By.xpath("//input[@data-ng-click='booking.accountOpen()' or @data-ng-model='booking.availableAccount.checked']")).click();
-		try {
 		
-		}
-		catch (Exception e) {}
 		
 		try {
 		driver.findElement(By.xpath("//div[@class='user-name']/input")).sendKeys(username);

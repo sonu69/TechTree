@@ -234,7 +234,7 @@ public class Search_Inputs {
 	}
 	
 	
-	public static void flight_name(WebDriver driver,int testrow) throws IOException {
+	public static void flight_name(WebDriver driver,int testrow) throws IOException, InterruptedException {
 		
 		String flightname = ExcelUtils.getStringValue(testrow, Constants.flightname_col);
 		
@@ -242,7 +242,9 @@ public class Search_Inputs {
 		
 		if(status.equalsIgnoreCase("yes")) {
 		SearchFlight_Page.advance_search(driver).click();
+		 
 		driver.findElement(By.xpath("//input[@ng-model='inputValue']")).sendKeys(flightname);
+		
 		WebElement element = driver.findElement(By.xpath("//div[@id='mCSB_2_container']/li[contains(text(),'"+flightname+"')]"));
 		Actions act = new Actions(driver);
 		act.moveToElement(element).build().perform();

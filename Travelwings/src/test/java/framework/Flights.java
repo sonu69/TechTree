@@ -236,7 +236,7 @@ public class Flights {
 	
 	
 	
-	
+	Thread.sleep(3000);
 	
 	driver.findElement(By.xpath("//input[@id='cardNumber']")).sendKeys("4000000000000051");
 	

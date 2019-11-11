@@ -39,28 +39,32 @@ public class Test {
 		Search_Inputs.add_destination(driver,TestCase_Row);
 
 		Search_Inputs.journeydate(driver,TestCase_Row);
-				
+		
 		Search_Inputs.returndate(driver,TestCase_Row);
-				
+		
 		Search_Inputs.pax_list(driver,TestCase_Row);
 				
 		Search_Inputs.flight_name(driver,TestCase_Row);
-				
-		Thread.sleep(2000);
-				
+								
 		SearchFlight_Page.search_flight(driver).click();
 				
-		Thread.sleep(10000);
+		FlightSelect_Page.flight_result(driver,TestCase_Row);
 		
-		FlightSelect_Page.select_flight(driver,TestCase_Row);
+		try {
+		if(driver.findElement(By.xpath("//h4[@class='modal-title ng-binding ng-scope']")).isDisplayed()==true) {
+			
+			WebElement continue_button = driver.findElement(By.xpath("//button[contains(text(),'Continue')]"));
+			
+			continue_button.click();
+			
+		} 
 		
+		}
+		catch (Exception e){e.getMessage();}
+
 		Thread.sleep(1000);
-
-		WebElement continue_button = driver.findElement(By.xpath("//div[@class='text-right continue']/button[text()='CONTINUE']"));
-
-		//driver.findElements(By.xpath("//button[text()='CONTINUE']")).get(0).click();
-
-		Helper.Webelement(driver, Itinerary_Page.continue_itinerary(driver));
+		
+		Itinerary_Page.continue_itinerary(driver).click();
 		
 		Thread.sleep(1000);
 		
@@ -73,8 +77,6 @@ public class Test {
 		Thread.sleep(5000);
 		
 		Addpax_Actions.ssr(driver,TestCase_Row);
-		
-		System.exit(0);
 		
 		Payment_Actions.payment_action(driver, TestCase_Row);
 

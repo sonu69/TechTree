@@ -200,8 +200,8 @@ public class TravellerDetails_Page {
 		d_month0.selectByVisibleText(d_month);
 		driver.findElement(By.xpath("//a[@class='ui-state-default' and text()='"+d_day+"']")).click();
 		
-		String phone_number = ExcelUtils.getStringValue(90+k, 5);
-		phone.get(k+l).sendKeys(phone_number);
+//		String phone_number = ExcelUtils.getStringValue(90+k, 5);
+//		phone.get(k+l).sendKeys(phone_number);
 
 		String passport_exp = ExcelUtils.getStringValue(90+k, 6);
 		passport.get(k+l).sendKeys(passport_exp);
@@ -222,7 +222,6 @@ public class TravellerDetails_Page {
 
 		slm1.selectByVisibleText(exp_month);
 
-		
 		driver.findElement(By.xpath("//a[text()='"+exp_day+"']")).click();
 
 		Select nation = new Select(nationality.get(k+l));

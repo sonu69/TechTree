@@ -42,7 +42,11 @@ public class Payment_Page {
 	}
 	
 	public static WebElement payment_submit(WebDriver driver) {
-		element = driver.findElement(By.xpath("//div[@class='col-md-3 padding-zero']/button[@class='bttn-yellow']"));
+		
+		//element = driver.findElement(By.xpath("//div[@class='col-md-3 padding-zero']/button[@class='bttn-yellow']"));
+		
+		element = driver.findElement(By.xpath("//button[contains(text(),'MAKE PAYMENT')]"));
+		
 		return element;
 	}
 	
